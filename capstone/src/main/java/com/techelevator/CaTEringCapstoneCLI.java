@@ -4,8 +4,6 @@ import com.techelevator.view.Menu;
 
 public class CaTEringCapstoneCLI {
 
-
-
 	private Menu menu;
 
 	public CaTEringCapstoneCLI(Menu menu) {
