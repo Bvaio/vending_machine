@@ -31,7 +31,10 @@ public class Item {
     public int getInventoryCount() {
         return inventoryCount;
     }
-    public void setInventoryCount(int inventoryCount) {
-        this.inventoryCount = inventoryCount;
+//    public void setInventoryCount(int inventoryCount) {
+//        this.inventoryCount = inventoryCount;
+//    }
+    public void removeOneFromInventory(){
+        inventoryCount = inventoryCount - 1;
     }
 }
