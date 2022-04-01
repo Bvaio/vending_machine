@@ -2,25 +2,24 @@ package com.techelevator.view;
 
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
+import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
 
     private Scanner scan = new Scanner( System.in );
     private static Inventory inventory = new Inventory(); // changed to static made it work?
     private static Balance balance = new Balance();
+    private static Map< String, Item > pulledInventory = pullInventory();
 
 
-    private DisplayMenu displayMenu;
-    private PurchaseMenu purchaseMenu;
+    private static DisplayMenu displayMenu = new DisplayMenu();
+    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
     private Sales sales;
 
 
@@ -55,23 +54,33 @@ public class Menu {
         return sales;
     }
 
-    public void sortedInventoryDisplay() {
-        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
-        Collections.sort( keys ); // sorts keys
-
-        for ( String key : keys  ) {
-            System.out.println( inventory.getItemMap().get( key ).displayItem() );
-        }
+    public PurchaseMenu getPurchaseMenu() {
+        return purchaseMenu;
     }
+
+    public static Map<String, Item> getPulledInventory() {
+        return pulledInventory;
+    }
+
+
+
+//    public void sortedInventoryDisplay() {
+//        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
+//        Collections.sort( keys ); // sorts keys
+//
+//        for ( String key : keys  ) {
+//            System.out.println( inventory.getItemMap().get( key ).displayItem() );
+//        }
+//    }
 
     public void selectMenu( String choice ) {
         switch( choice ) {
             case "D" :
-                displayMenu = new DisplayMenu();
+//                displayMenu = new DisplayMenu();
                 displayMenu.showMenu();
                 break;
             case "P" :
-                purchaseMenu = new PurchaseMenu();
+//                purchaseMenu = new PurchaseMenu();
                 purchaseMenu.showMenu();
                 break;
 //            case "S" :
@@ -82,6 +91,20 @@ public class Menu {
             default:
                 System.out.println( "None selected try again" );
         }
+    }
+
+    public void sortedInventoryDisplay() {
+        List<String> keys = new ArrayList<>( pulledInventory.keySet() ); // turn our map keys into a list
+        Collections.sort( keys ); // sorts keys
+
+        for ( String key : keys  ) {
+            System.out.println( key + " | " + pulledInventory.get( key ).displayItem() );
+        }
+    }
+
+    public static Map< String, Item> pullInventory() {
+        inventory.createItemMap("catering.csv");
+        return inventory.getItemMap();
     }
 
     public void exit() {// exits program

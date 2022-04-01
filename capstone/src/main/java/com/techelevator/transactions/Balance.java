@@ -16,7 +16,7 @@ public class Balance {
     private final BigDecimal FIVE = BigDecimal.valueOf(5);
     private final BigDecimal TEN = BigDecimal.valueOf(10);
     private final BigDecimal TWENTY = BigDecimal.valueOf(20);
-    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
+//    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
 
 
     public void feedMoney(Scanner scan) {
@@ -26,9 +26,9 @@ public class Balance {
         System.out.println("Current balance: $" + getBalance());
         String selection = scan.nextLine();
 
-        if (selection.equalsIgnoreCase("P")) {
-            purchaseMenu.showMenu();
-        }
+//        if (selection.equalsIgnoreCase("P")) { // balance shouldn't do this menu should
+//            purchaseMenu.showMenu();
+//        }
         BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
         if (money.compareTo(ZERO) > 0 && (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
             setBalance(money);
@@ -36,30 +36,45 @@ public class Balance {
             System.out.println("Invalid denomination selected. Please try again.");
             feedMoney(scan);
         }
+
+        System.out.println( "\nNew Balance: " + balance );
         System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
         String choice = scan.nextLine().toUpperCase();
+
         while (!choice.equals("Y") && !choice.equals("N")) {
             System.out.println("Invalid selection, please try again.");
             choice = scan.nextLine().toUpperCase();
         }
-        if (choice.equals("Y")) {
+        if (choice.equalsIgnoreCase("Y")) {
             feedMoney(scan);
-        } else if (choice.equals("N")) {
-            purchaseMenu.showMenu();
+        } else if (choice.equalsIgnoreCase("N")) {
+//            purchaseMenu.showMenu();
+            System.out.println("Returning to Purchase Menu");
         }
     }
 
-    public void payForItem(Scanner scan, Inventory inventory) {
-        System.out.println("Please select from the list below: ");
-        String selection = scan.nextLine().toUpperCase(); // added to uppercase
-        if (inventory.getItemMap().containsKey(selection) && inventory.getItemMap().get(selection).getItemPrice().compareTo(ZERO) == 0) {
-            System.out.println("Item cannot be purchased at this time");
-        } else if (balance.compareTo(inventory.getItemMap().get(selection).getItemPrice()) >= 0) {
-            balance = balance.subtract(inventory.getItemMap().get(selection).getItemPrice());
-            inventory.getItemMap().get(selection).removeOneFromInventory();
+//    public void payForItem(Scanner scan, Inventory inventory) {
+//        System.out.println("Please select from the list below: ");
+//        String selection = scan.nextLine().toUpperCase(); // added to uppercase
+//        if (inventory.getItemMap().containsKey(selection) && inventory.getItemMap().get(selection).getItemPrice().compareTo(ZERO) == 0) {
+//            System.out.println("Item cannot be purchased at this time");
+//        } else if (balance.compareTo(inventory.getItemMap().get(selection).getItemPrice()) >= 0) {
+//            balance = balance.subtract(inventory.getItemMap().get(selection).getItemPrice());
+//            inventory.getItemMap().get(selection).removeOneFromInventory();
+//        } else {
+//            System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
+//        } purchaseMenu.showMenu();
+//    }
+
+    public void payForItem( Item item ) {
+        if (item.getItemPrice().compareTo(ZERO) == 0) {
+            System.out.println("Item out of stock");
+        } else if (balance.compareTo(item.getItemPrice()) >= 0) {
+            balance = balance.subtract(item.getItemPrice());
+            item.removeOneFromInventory();
         } else {
-            System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
-        } purchaseMenu.showMenu();
+            System.out.println( "Insufficient funds" );
+        }
     }
 
     public void dispenseMoney() {

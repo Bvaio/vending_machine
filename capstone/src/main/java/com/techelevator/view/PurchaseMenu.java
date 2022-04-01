@@ -43,9 +43,15 @@ public class PurchaseMenu extends Menu {
                 showMenu();
                 break;
             case "S":
+//                System.out.println("Our current inventory");
+//                sortedInventoryDisplay();
+//                readBalance().payForItem( getScan(), getInventory() );
+//                showMenu();
                 System.out.println("Our current inventory");
                 sortedInventoryDisplay();
-                readBalance().payForItem( getScan(), getInventory() );
+                System.out.println("What would you like to purchase");
+                String scan = getScan().nextLine().toUpperCase();
+                readBalance().payForItem( getPulledInventory().get( scan ) );
                 showMenu();
                 break;
             case "F":
@@ -61,27 +67,27 @@ public class PurchaseMenu extends Menu {
         }
     }
 
-    @Override
-    public void sortedInventoryDisplay() {
-//        List<String> keys = new ArrayList<>( getInventory().getItemMap().keySet() ); // turn our map keys into a list
-//        Collections.sort( keys ); // sorts keys
+//    @Override
+//    public void sortedInventoryDisplay() {
+////        List<String> keys = new ArrayList<>( getInventory().getItemMap().keySet() ); // turn our map keys into a list
+////        Collections.sort( keys ); // sorts keys
+////
+////        for ( String key : keys  ) {
+////            System.out.println( key + " | " + getInventory().getItemMap().get( key ).displayItem() );
+////        }
+//        List< String > keys = new ArrayList<>( pulledInventory.keySet() );
+//        Collections.sort( keys );
 //
-//        for ( String key : keys  ) {
-//            System.out.println( key + " | " + getInventory().getItemMap().get( key ).displayItem() );
+//        for ( String key : keys ) {
+//            System.out.println( key + " | " + pulledInventory.get( key ).displayItem() );
 //        }
-        List< String > keys = new ArrayList<>( pulledInventory.keySet() );
-        Collections.sort( keys );
+//
+//    }
 
-        for ( String key : keys ) {
-            System.out.println( key + " | " + pulledInventory.get( key ).displayItem() );
-        }
-
-    }
-
-    public Map< String, Item > pullInventory() {
-        getInventory().createItemMap("catering.csv");
-        return getInventory().getItemMap();
-    }
+//    public Map< String, Item > pullInventory() {
+//        getInventory().createItemMap("catering.csv");
+//        return getInventory().getItemMap();
+//    }
 
 //    public void sortedInventoryDisplayForPurchase(Inventory inventory) {
 //        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
