@@ -35,8 +35,8 @@ public class Item {
 //        this.inventoryCount = inventoryCount;
 //    }
 
-    public String getItemValues() {
-        return itemName + " " + itemType + " " + itemPrice + " " + inventoryCount;
+    public String displayItem() {
+        return itemName + " | " + itemPrice + " | Current Stock: " + inventoryCount;
     }
 
     public void removeOneFromInventory(){
