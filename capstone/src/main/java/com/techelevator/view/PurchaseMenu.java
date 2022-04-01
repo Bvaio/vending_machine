@@ -10,8 +10,20 @@ public class PurchaseMenu extends Menu {
 
     @Override
     public void showMenu() {
+<<<<<<< HEAD
         getInventory().createItemMap("catering.csv");
         sortedInventoryDisplay();
+=======
+        System.out.println("Our currenty inventory");
+
+        super.sortedInventoryDisplay();
+
+//        System.out.println( "What would you like to do?" );
+//        System.out.println( "Return to Main Menu ( D )" );
+//        System.out.println( "Purchase Menu ( P )" );
+//        System.out.println( "Exit ( E )" );
+//        String menuChoice = getScan().nextLine();
+>>>>>>> ede930527687c030f1cbecb7109bcb99ef5dea35
 
         System.out.println("Please select from the following options:");
         System.out.println("Feed Money ( M )");

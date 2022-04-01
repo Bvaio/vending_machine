@@ -13,15 +13,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+<<<<<<< HEAD
     private Scanner scan = new Scanner(System.in);
     private Inventory inventory = new Inventory();
     private Balance balance = new Balance();
+=======
+    private Scanner scan = new Scanner( System.in );
+    private static Inventory inventory = new Inventory(); // changed to static made it work?
+    private static Balance balance = new Balance();
+>>>>>>> ede930527687c030f1cbecb7109bcb99ef5dea35
     private DisplayMenu displayMenu;
     private PurchaseMenu purchaseMenu;
     private Sales sales;
 
     public void showMenu() {
-        scan = new Scanner( System.in );
+        inventory.createItemMap( "catering.csv" );
 
         System.out.println( "Welcome to the Terminal" );
         System.out.println( "Display Menu ( D )" );
@@ -30,23 +36,7 @@ public class Menu {
 
         String menuChoice = scan.nextLine().toUpperCase();
 
-        switch( menuChoice ) {
-            case "D" :
-                displayMenu = new DisplayMenu();
-                displayMenu.showMenu();
-                break;
-            case "P" :
-                purchaseMenu = new PurchaseMenu();
-                purchaseMenu.showMenu();
-                break;
-//            case "S" :
-//                sales.getSales();
-            case "E" :
-                exit();
-                break;
-            default:
-                System.out.println( "None selected try again" );
-        }
+        selectMenu( menuChoice );
 
     }
 
@@ -71,12 +61,32 @@ public class Menu {
         return sales;
     }
 
-    public void sortedInventoryDisplay() {// move to another Class
+    public void sortedInventoryDisplay() {
         List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
-        Collections.sort( keys );
+        Collections.sort( keys ); // sorts keys
 
         for ( String key : keys  ) {
-            System.out.println( key + " " + inventory.getItemMap().get( key ).getItemValues() );
+            System.out.println( inventory.getItemMap().get( key ).displayItem() );
+        }
+    }
+
+    public void selectMenu( String choice ) {
+        switch( choice ) {
+            case "D" :
+                displayMenu = new DisplayMenu();
+                displayMenu.showMenu();
+                break;
+            case "P" :
+                purchaseMenu = new PurchaseMenu();
+                purchaseMenu.showMenu();
+                break;
+//            case "S" :
+//                sales.getSales();
+            case "E" :
+                exit();
+                break;
+            default:
+                System.out.println( "None selected try again" );
         }
     }
 
