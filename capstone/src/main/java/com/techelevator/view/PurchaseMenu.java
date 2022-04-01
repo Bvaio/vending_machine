@@ -51,13 +51,13 @@ public class PurchaseMenu extends Menu {
             case "F":
                 readBalance().dispenseMoney();
                 System.out.println( "Current Balance: " + readBalance().getBalance() );
-                System.out.println( "Returning to Main Menu");
+                System.out.println( "Returning to Main Menu\n ");
                 super.showMenu();
 //                exit(); // doesn't do anything currently
                 break;
             default:
-                readBalance().dispenseMoney();
                 System.out.println("Invalid selection, please try again.");
+                showMenu();
         }
     }
 

@@ -25,7 +25,7 @@ public class Menu {
 
 
     public void showMenu() {
-        inventory.createItemMap( "catering.csv" );
+//        inventory.createItemMap( "catering.csv" );
         System.out.println( "Welcome to the Terminal" );
         System.out.println( "Display Menu ( D )" );
         System.out.println( "Purchase Menu ( P )" );

@@ -22,8 +22,14 @@ public class Balance {
     public void feedMoney(Scanner scan) {
         System.out.println("Please enter one of the denominations below: ");
         System.out.println("$1\n$5\n$10\n$20");
+        System.out.println("( P ) to quit and return to Purchase Menu");
         System.out.println("Current balance: $" + getBalance());
-        BigDecimal money = BigDecimal.valueOf(Integer.parseInt(scan.nextLine()));
+        String selection = scan.nextLine();
+
+        if (selection.equalsIgnoreCase("P")) {
+            purchaseMenu.showMenu();
+        }
+        BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
         if (money.compareTo(ZERO) > 0 && (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
             setBalance(money);
         } else {
@@ -32,14 +38,16 @@ public class Balance {
         }
         System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
         String choice = scan.nextLine().toUpperCase();
+        while (!choice.equals("Y") && !choice.equals("N")) {
+            System.out.println("Invalid selection, please try again.");
+            choice = scan.nextLine().toUpperCase();
+        }
         if (choice.equals("Y")) {
             feedMoney(scan);
+        } else if (choice.equals("N")) {
+            purchaseMenu.showMenu();
         }
-//        else {
-//            purchaseMenu.showMenu();
-//        }
     }
-
 
     public void payForItem(Scanner scan, Inventory inventory) {
         System.out.println("Please select from the list below: ");
@@ -51,8 +59,7 @@ public class Balance {
             inventory.getItemMap().get(selection).removeOneFromInventory();
         } else {
             System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
-        }
-//        purchaseMenu.showMenu();
+        } purchaseMenu.showMenu();
     }
 
     public void dispenseMoney() {
