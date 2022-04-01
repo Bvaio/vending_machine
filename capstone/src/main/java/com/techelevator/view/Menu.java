@@ -1,13 +1,11 @@
 package com.techelevator.view;
 
+import com.techelevator.data.PurchaseMenu;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.*;
 
 public class Menu {

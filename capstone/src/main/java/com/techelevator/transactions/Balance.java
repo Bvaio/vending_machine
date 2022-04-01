@@ -1,13 +1,8 @@
 package com.techelevator.transactions;
 
-import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
-import com.techelevator.view.Menu;
-import com.techelevator.view.PurchaseMenu;
 
-import java.io.File;
 import java.math.BigDecimal;
-import java.util.*;
 
 public class Balance {
     private static BigDecimal balance = BigDecimal.valueOf(0);

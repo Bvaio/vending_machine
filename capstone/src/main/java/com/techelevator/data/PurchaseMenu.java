@@ -1,8 +1,9 @@
-package com.techelevator.view;
+package com.techelevator.data;
 
 import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
+import com.techelevator.view.Menu;
 
 import java.math.BigDecimal;
 import java.util.*;
