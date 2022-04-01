@@ -27,11 +27,11 @@ public class Menu {
         System.out.println( "Display Menu ( D )" );
         System.out.println( "Purchase Menu ( P )" );
         System.out.println( "Exit ( E )" );
+        System.out.print( "- - >  " );
         String menuChoice = scan.nextLine().toUpperCase();
         selectMenu( menuChoice );
     }
 
-// to-do -- build out
     public Scanner getScan() {
         return scan;
     }
@@ -60,25 +60,17 @@ public class Menu {
         return pulledInventory;
     }
 
-
-
-//    public void sortedInventoryDisplay() {
-//        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
-//        Collections.sort( keys ); // sorts keys
-//
-//        for ( String key : keys  ) {
-//            System.out.println( inventory.getItemMap().get( key ).displayItem() );
-//        }
-//    }
+    public void showInventory() {
+        System.out.println("\nOur currently inventory");
+        sortedInventoryDisplay();
+    }
 
     public void selectMenu( String choice ) {
         switch( choice ) {
             case "D" :
-//                displayMenu = new DisplayMenu();
                 displayMenu.showMenu();
                 break;
             case "P" :
-//                purchaseMenu = new PurchaseMenu();
                 purchaseMenu.showMenu();
                 break;
 //            case "S" :
@@ -106,7 +98,8 @@ public class Menu {
     }
 
     public void exit() {// exits program
-//        continueProgram = false;
+        readBalance().dispenseMoney();
+        System.exit( 0 );
     }
 
 }
