@@ -17,9 +17,11 @@ public class CaTEringCapstoneCLI {
 	}
 
 	public void run() {
-		while (true) {
-			//  to do -- build out main menu
-
-		}
+//		while (true) {
+//			//  to do -- build out main menu
+//			System.out.println();
+//
+//		}
+		menu.showMenu();
 	}
 }

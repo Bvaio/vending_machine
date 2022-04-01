@@ -19,14 +19,14 @@ public class Item {
     public String getSlotIdentifier() {
         return slotIdentifier;
     }
-    public String getItemName() {
+    public String getItemName() { // make logger to report item is out of stock
         return itemName;
     }
     public String getItemType() {
         return itemType;
     }
     public BigDecimal getItemPrice() {
-        return itemPrice;
+        return inventoryCount > 0 ? itemPrice : BigDecimal.valueOf( 0 );
     }
     public int getInventoryCount() {
         return inventoryCount;
@@ -35,6 +35,6 @@ public class Item {
 //        this.inventoryCount = inventoryCount;
 //    }
     public void removeOneFromInventory(){
-        inventoryCount = inventoryCount - 1;
+        inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
     }
 }

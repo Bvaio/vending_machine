@@ -22,7 +22,9 @@ public class Balance {
     }
 
     public void payForItem(Item item) {
-        if (balance.compareTo(item.getItemPrice()) >= 0) {
+        if ( item.getItemPrice().compareTo( ZERO ) == 0 ) {
+            System.out.println( "Item cannot be purchased at this time" );
+        } else if ( balance.compareTo( item.getItemPrice() ) >= 0 ) {
             balance = balance.subtract(item.getItemPrice());
             item.removeOneFromInventory();
         }
