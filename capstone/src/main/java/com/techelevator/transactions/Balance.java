@@ -12,30 +12,32 @@ import java.util.*;
 public class Balance {
     private static BigDecimal balance = BigDecimal.valueOf(0);
     private final BigDecimal ZERO = BigDecimal.valueOf(0);
-    private final BigDecimal ONE = BigDecimal.valueOf(1);
-    private final BigDecimal FIVE = BigDecimal.valueOf(5);
-    private final BigDecimal TEN = BigDecimal.valueOf(10);
-    private final BigDecimal TWENTY = BigDecimal.valueOf(20);
+//    private final BigDecimal ONE = BigDecimal.valueOf(1);
+//    private final BigDecimal FIVE = BigDecimal.valueOf(5);
+//    private final BigDecimal TEN = BigDecimal.valueOf(10);
+//    private final BigDecimal TWENTY = BigDecimal.valueOf(20);
 //    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
 
 
-    public void feedMoney(Scanner scan) {
-        System.out.println("Please enter one of the denominations below: ");
-        System.out.println("$1\n$5\n$10\n$20");
-        System.out.println("( P ) to quit and return to Purchase Menu");
-        System.out.println("Current balance: $" + getBalance());
-        String selection = scan.nextLine();
+//    public void feedMoney( Scanner scan ) {
+    public void feedMoney( BigDecimal money ) {
+//        System.out.println("Please enter one of the denominations below: ");
+//        System.out.println("$0\n$1\n$5\n$10\n$20");
+////        System.out.println("( P ) to quit and return to Purchase Menu");
+//        System.out.println("Current balance: $" + getBalance());
+//        String selection = scan.nextLine();
 
 //        if (selection.equalsIgnoreCase("P")) { // balance shouldn't do this menu should
 //            purchaseMenu.showMenu();
 //        }
-        BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
-        if (money.compareTo(ZERO) > 0 && (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
-            setBalance(money);
-        } else {
-            System.out.println("Invalid denomination selected. Please try again.");
-            feedMoney(scan);
-        }
+//        BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
+//        if (money.compareTo(ZERO) > 0 && (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
+//            setBalance(money);
+//        } else {
+//            System.out.println("Invalid denomination selected. Please try again.");
+//            feedMoney(scan);
+//        }
+        setBalance( money );
 
         System.out.println( "\nNew Balance: " + balance );
         System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
