@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-    private Scanner scan;
+    private Scanner scan = new Scanner(System.in);
     private Inventory inventory = new Inventory();
     private Balance balance = new Balance();
     private DisplayMenu displayMenu;
@@ -65,10 +65,6 @@ public class Menu {
 
     public DisplayMenu getDisplayMenu() {
         return displayMenu;
-    }
-
-    public PurchaseMenu getPurchaseMenu() {
-        return purchaseMenu;
     }
 
     public Sales getSales() {

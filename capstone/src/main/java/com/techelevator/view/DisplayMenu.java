@@ -3,6 +3,7 @@ package com.techelevator.view;
 import java.util.Scanner;
 
 public class DisplayMenu extends Menu {
+    private PurchaseMenu purchaseMenu;
 
     public String thing() {
         return "Hello";
@@ -17,7 +18,21 @@ public class DisplayMenu extends Menu {
         System.out.println( "Purchase Menu ( P )" );
         System.out.println( "Exit ( E )" );
 
-//        String menuChoice = scan.nextLine().toUpperCase();
+        String menuChoice = getScan().nextLine().toUpperCase();
+        switch (menuChoice) {
+            case "D":
+                super.showMenu();
+                break;
+            case "P":
+                PurchaseMenu purchaseMenu = new PurchaseMenu();
+                purchaseMenu.showMenu();
+                break;
+            case "E":
+                exit();
+                break;
+            default:
+                System.out.println("Invalid selection, please try again.");
+        }
     }
 
 
