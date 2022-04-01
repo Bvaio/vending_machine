@@ -16,6 +16,7 @@ public class Balance {
     private final BigDecimal FIVE = BigDecimal.valueOf(5);
     private final BigDecimal TEN = BigDecimal.valueOf(10);
     private final BigDecimal TWENTY = BigDecimal.valueOf(20);
+    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
 
 
     public void feedMoney(Scanner scan) {
@@ -34,9 +35,8 @@ public class Balance {
         if (choice.equals("Y")) {
             feedMoney(scan);
         } else {
-            System.out.println("test");
-        } PurchaseMenu purchaseMenu = new PurchaseMenu();
-        purchaseMenu.showMenu();
+            purchaseMenu.showMenu();
+        }
     }
 
 
@@ -47,13 +47,11 @@ public class Balance {
             System.out.println("Item cannot be purchased at this time");
         } else if (balance.compareTo(inventory.getItemMap().get(selection).getItemPrice()) >= 0) {
             balance = balance.subtract(inventory.getItemMap().get(selection).getItemPrice());
-//            Item item = new Item(inventory.getItemMap().get(selection).getSlotIdentifier(),inventory.getItemMap().get(selection).getItemName(),)
-            inventory.removeOneFromInventory();
-            System.out.println(balance);
-
+            inventory.getItemMap().get(selection).removeOneFromInventory();
         } else {
             System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
         }
+        purchaseMenu.showMenu();
     }
 
     public void dispenseMoney() {

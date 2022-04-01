@@ -4,23 +4,23 @@ import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class PurchaseMenu extends Menu {
-    Balance balance = new Balance();
+
     Inventory inventory = new Inventory();
+
     public String thing() {
         return "world";
     }
 
     @Override
     public void showMenu() {
-
         inventory.createItemMap("catering.csv");
-        sortedInventoryDisplay();
-
         System.out.println("Our current inventory");
 
         sortedInventoryDisplay();
@@ -39,14 +39,11 @@ public class PurchaseMenu extends Menu {
         System.out.println("Current balance: $" + balance.getBalance());
         String menuChoice = getScan().nextLine().toUpperCase();
         switch (menuChoice) {
-
             case "M":
                 balance.feedMoney(getScan());
                 break;
             case "S":
-                sortedInventoryDisplay();
                 balance.payForItem(getScan(),inventory);
-                sortedInventoryDisplay();
                 break;
             case "F":
                 exit();
@@ -55,6 +52,7 @@ public class PurchaseMenu extends Menu {
                 System.out.println("Invalid selection, please try again.");
         }
     }
+
     @Override
     public void sortedInventoryDisplay() {
         List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
