@@ -7,15 +7,18 @@ import com.techelevator.transactions.Balance;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private Scanner scan;
     private Inventory inventory = new Inventory();
-    private Balance balance;
-    private DisplayMenu displayMenu = new DisplayMenu();
-    private PurchaseMenu purchaseMenu = new PurchaseMenu();
-    private Sales sales = new Sales();
+    private Balance balance = new Balance();
+    private DisplayMenu displayMenu;
+    private PurchaseMenu purchaseMenu;
+    private Sales sales;
 
     public void showMenu() {
         scan = new Scanner( System.in );
@@ -29,10 +32,12 @@ public class Menu {
 
         switch( menuChoice ) {
             case "D" :
-                displayMenu.getDisplayMenu();
+                displayMenu = new DisplayMenu();
+                displayMenu.showMenu();
                 break;
             case "P" :
-                purchaseMenu.getPurchaseMenu();
+                purchaseMenu = new PurchaseMenu();
+                purchaseMenu.showMenu();
                 break;
 //            case "S" :
 //                sales.getSales();
@@ -68,6 +73,15 @@ public class Menu {
 
     public Sales getSales() {
         return sales;
+    }
+
+    public void sortedInventoryDisplay() {// move to another Class
+        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
+        Collections.sort( keys );
+
+        for ( String key : keys  ) {
+            System.out.println( key + " " + inventory.getItemMap().get( key ).getItemValues() );
+        }
     }
 
     public void exit() { // exits program

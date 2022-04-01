@@ -34,6 +34,11 @@ public class Item {
 //    public void setInventoryCount(int inventoryCount) {
 //        this.inventoryCount = inventoryCount;
 //    }
+
+    public String getItemValues() {
+        return itemName + " " + itemType + " " + itemPrice + " " + inventoryCount;
+    }
+
     public void removeOneFromInventory(){
         inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
     }

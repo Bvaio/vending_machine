@@ -16,7 +16,7 @@ public class Inventory {
             while(scanReadFile.hasNextLine()) {
                 String readLine = scanReadFile.nextLine();
                 String[] readLineToArray = readLine.split(",");
-                Item makeItem = new Item(readLineToArray[0],readLineToArray[1],readLineToArray[2],BigDecimal.valueOf(Integer.parseInt(readLineToArray[3])));
+                Item makeItem = new Item(readLineToArray[0],readLineToArray[1],readLineToArray[2],BigDecimal.valueOf(Double.parseDouble(readLineToArray[3])));
                 itemMap.put(makeItem.getSlotIdentifier(), makeItem);
             }
         } catch (FileNotFoundException e) {
