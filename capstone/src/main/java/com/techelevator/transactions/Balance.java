@@ -34,15 +34,16 @@ public class Balance {
         String choice = scan.nextLine().toUpperCase();
         if (choice.equals("Y")) {
             feedMoney(scan);
-        } else {
-            purchaseMenu.showMenu();
         }
+//        else {
+//            purchaseMenu.showMenu();
+//        }
     }
 
 
     public void payForItem(Scanner scan, Inventory inventory) {
         System.out.println("Please select from the list below: ");
-        String selection = scan.nextLine();
+        String selection = scan.nextLine().toUpperCase(); // added to uppercase
         if (inventory.getItemMap().containsKey(selection) && inventory.getItemMap().get(selection).getItemPrice().compareTo(ZERO) == 0) {
             System.out.println("Item cannot be purchased at this time");
         } else if (balance.compareTo(inventory.getItemMap().get(selection).getItemPrice()) >= 0) {
@@ -51,7 +52,7 @@ public class Balance {
         } else {
             System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
         }
-        purchaseMenu.showMenu();
+//        purchaseMenu.showMenu();
     }
 
     public void dispenseMoney() {

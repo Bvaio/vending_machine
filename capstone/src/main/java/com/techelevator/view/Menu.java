@@ -43,7 +43,7 @@ public class Menu {
         return inventory;
     }
 
-    public Balance getBalance() {
+    public Balance readBalance() {
         return balance;
     }
 

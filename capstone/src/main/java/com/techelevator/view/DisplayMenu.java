@@ -22,8 +22,6 @@ public class DisplayMenu extends Menu {
 
         selectMenu( menuChoice );
 
-
-
         switch (menuChoice) {
             case "D":
                 super.showMenu();
