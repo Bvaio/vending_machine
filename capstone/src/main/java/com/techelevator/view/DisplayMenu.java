@@ -23,7 +23,7 @@ public class DisplayMenu extends Menu {
         selectMenu( menuChoice );
 
 
-        String menuChoice = getScan().nextLine().toUpperCase();
+
         switch (menuChoice) {
             case "D":
                 super.showMenu();
@@ -47,7 +47,8 @@ public class DisplayMenu extends Menu {
                 super.showMenu();
                 break;
             case "P" :
-                super.getPurchaseMenu().showMenu();
+                PurchaseMenu purchaseMenu = new PurchaseMenu();
+                purchaseMenu.showMenu();
                 break;
 //            case "S" :
 //                sales.getSales();
@@ -58,6 +59,5 @@ public class DisplayMenu extends Menu {
                 System.out.println( "None selected try again" );
         }
     }
-
 
 }

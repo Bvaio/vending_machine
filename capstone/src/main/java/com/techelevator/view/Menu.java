@@ -13,31 +13,23 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-<<<<<<< HEAD
-    private Scanner scan = new Scanner(System.in);
-    private Inventory inventory = new Inventory();
-    private Balance balance = new Balance();
-=======
+
     private Scanner scan = new Scanner( System.in );
     private static Inventory inventory = new Inventory(); // changed to static made it work?
     private static Balance balance = new Balance();
->>>>>>> ede930527687c030f1cbecb7109bcb99ef5dea35
+
     private DisplayMenu displayMenu;
     private PurchaseMenu purchaseMenu;
     private Sales sales;
 
     public void showMenu() {
         inventory.createItemMap( "catering.csv" );
-
         System.out.println( "Welcome to the Terminal" );
         System.out.println( "Display Menu ( D )" );
         System.out.println( "Purchase Menu ( P )" );
         System.out.println( "Exit ( E )" );
-
         String menuChoice = scan.nextLine().toUpperCase();
-
         selectMenu( menuChoice );
-
     }
 
 // to-do -- build out
