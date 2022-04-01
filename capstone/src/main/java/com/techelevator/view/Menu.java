@@ -18,9 +18,11 @@ public class Menu {
     private static Inventory inventory = new Inventory(); // changed to static made it work?
     private static Balance balance = new Balance();
 
+
     private DisplayMenu displayMenu;
     private PurchaseMenu purchaseMenu;
     private Sales sales;
+
 
     public void showMenu() {
         inventory.createItemMap( "catering.csv" );
@@ -82,8 +84,10 @@ public class Menu {
         }
     }
 
-    public void exit() { // exits program
+    public void exit() {// exits program
+//        continueProgram = false;
     }
+
 }
 
 

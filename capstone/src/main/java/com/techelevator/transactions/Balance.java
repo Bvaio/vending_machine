@@ -1,12 +1,13 @@
 package com.techelevator.transactions;
 
+import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
+import com.techelevator.view.Menu;
 import com.techelevator.view.PurchaseMenu;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Balance {
     private static BigDecimal balance = BigDecimal.valueOf(0);
@@ -39,14 +40,20 @@ public class Balance {
     }
 
 
-    public void payForItem(Item item) {
-        if ( item.getItemPrice().compareTo( ZERO ) == 0 ) {
-            System.out.println( "Item cannot be purchased at this time" );
-        } else if ( balance.compareTo( item.getItemPrice() ) >= 0 ) {
-            balance = balance.subtract(item.getItemPrice());
-            item.removeOneFromInventory();
+    public void payForItem(Scanner scan, Inventory inventory) {
+        System.out.println("Please select from the list below: ");
+        String selection = scan.nextLine();
+        if (inventory.getItemMap().containsKey(selection) && inventory.getItemMap().get(selection).getItemPrice().compareTo(ZERO) == 0) {
+            System.out.println("Item cannot be purchased at this time");
+        } else if (balance.compareTo(inventory.getItemMap().get(selection).getItemPrice()) >= 0) {
+            balance = balance.subtract(inventory.getItemMap().get(selection).getItemPrice());
+//            Item item = new Item(inventory.getItemMap().get(selection).getSlotIdentifier(),inventory.getItemMap().get(selection).getItemName(),)
+            inventory.removeOneFromInventory();
+            System.out.println(balance);
+
+        } else {
+            System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
         }
-        System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
     }
 
     public void dispenseMoney() {
@@ -74,6 +81,7 @@ public class Balance {
             }
         }   System.out.println("Dispensing " + dollars + " dollar(s), " + quarter + " quarter(s), " + dime + " dime(s), " + nickel + " nickel(s)");
     }
+
 
     public BigDecimal getBalance() {
         return balance;

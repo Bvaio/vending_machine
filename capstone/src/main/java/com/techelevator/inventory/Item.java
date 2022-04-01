@@ -7,9 +7,9 @@ public class Item {
     private String itemName;
     private String itemType;
     private BigDecimal itemPrice;
-    private int inventoryCount = 7;
+//    private int inventoryCount = 7;
 
-    public Item(String slotIdentifier, String itemName, String itemType, BigDecimal itemPrice) {
+    public Item(String slotIdentifier, String itemName, String itemType, BigDecimal itemPrice, int inventoryCount) {
         this.slotIdentifier = slotIdentifier;
         this.itemName = itemName;
         this.itemType = itemType;
@@ -26,20 +26,20 @@ public class Item {
         return itemType;
     }
     public BigDecimal getItemPrice() {
-        return inventoryCount > 0 ? itemPrice : BigDecimal.valueOf( 0 );
+        Inventory inventory = new Inventory();
+        return inventory.getInventoryCount() > 0 ? itemPrice : BigDecimal.valueOf( 0 );
     }
-    public int getInventoryCount() {
-        return inventoryCount;
+    public void getInventoryCount(Inventory inventory) {
+
     }
-//    public void setInventoryCount(int inventoryCount) {
-//        this.inventoryCount = inventoryCount;
+//    public BigDecimal getItemPrice() {
+//        return BigDecimal.valueOf(0);
 //    }
-
     public String displayItem() {
-        return itemName + " | " + itemPrice + " | Current Stock: " + inventoryCount;
+        Inventory inventory = new Inventory();
+        return itemName + " | " + itemPrice + " | Current Stock: " + inventory.getInventoryCount();
     }
-
-    public void removeOneFromInventory(){
-        inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
-    }
+//    public void removeOneFromInventory(){
+//        inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
+//    }
 }

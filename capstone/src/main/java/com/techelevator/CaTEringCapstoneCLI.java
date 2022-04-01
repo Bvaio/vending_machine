@@ -3,7 +3,6 @@ package com.techelevator;
 import com.techelevator.view.Menu;
 
 public class CaTEringCapstoneCLI {
-
 	private Menu menu;
 
 	public CaTEringCapstoneCLI(Menu menu) {
@@ -17,11 +16,11 @@ public class CaTEringCapstoneCLI {
 	}
 
 	public void run() {
-//		while (true) {
+//		while () {
 //			//  to do -- build out main menu
 //			System.out.println();
 //
 //		}
-		menu.showMenu();
+			menu.showMenu();
+		}
 	}
-}

@@ -1,9 +1,16 @@
 package com.techelevator.view;
 
+import com.techelevator.inventory.Inventory;
+import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class PurchaseMenu extends Menu {
     Balance balance = new Balance();
+    Inventory inventory = new Inventory();
     public String thing() {
         return "world";
     }
@@ -11,12 +18,12 @@ public class PurchaseMenu extends Menu {
     @Override
     public void showMenu() {
 
-        getInventory().createItemMap("catering.csv");
+        inventory.createItemMap("catering.csv");
         sortedInventoryDisplay();
 
-        System.out.println("Our currenty inventory");
+        System.out.println("Our current inventory");
 
-        super.sortedInventoryDisplay();
+        sortedInventoryDisplay();
 
 //        System.out.println( "What would you like to do?" );
 //        System.out.println( "Return to Main Menu ( D )" );
@@ -24,7 +31,7 @@ public class PurchaseMenu extends Menu {
 //        System.out.println( "Exit ( E )" );
 //        String menuChoice = getScan().nextLine();
 
-
+        Balance balance = new Balance();
         System.out.println("Please select from the following options:");
         System.out.println("Feed Money ( M )");
         System.out.println("Select Item ( S )");
@@ -32,13 +39,14 @@ public class PurchaseMenu extends Menu {
         System.out.println("Current balance: $" + balance.getBalance());
         String menuChoice = getScan().nextLine().toUpperCase();
         switch (menuChoice) {
+
             case "M":
-                Balance balance = new Balance();
                 balance.feedMoney(getScan());
                 break;
             case "S":
-                PurchaseMenu purchaseMenu = new PurchaseMenu();
-                purchaseMenu.showMenu();
+                sortedInventoryDisplay();
+                balance.payForItem(getScan(),inventory);
+                sortedInventoryDisplay();
                 break;
             case "F":
                 exit();
@@ -47,6 +55,23 @@ public class PurchaseMenu extends Menu {
                 System.out.println("Invalid selection, please try again.");
         }
     }
+    @Override
+    public void sortedInventoryDisplay() {
+        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
+        Collections.sort( keys ); // sorts keys
+
+        for ( String key : keys  ) {
+            System.out.println( key + " | " + inventory.getItemMap().get( key ).displayItem() );
+        }
+    }
+
+//    public void sortedInventoryDisplayForPurchase(Inventory inventory) {
+//        List<String> keys = new ArrayList<>( inventory.getItemMap().keySet() ); // turn our map keys into a list
+//        Collections.sort( keys ); // sorts keys
+//        for ( String key : keys  ) {
+//            System.out.println( key + " " + inventory.getItemMap().get(key).displayForPurchase() );
+//        }
+//    }
 }
 
 
