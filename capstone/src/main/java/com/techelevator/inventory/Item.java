@@ -20,7 +20,7 @@ public class Item {
         return slotIdentifier;
     }
     public String getItemName() { // make logger to report item is out of stock
-        return itemName;
+        return inventoryCount > 0 ? itemName : itemName + " : OUT OF STOCK";
     }
     public String getItemType() {
         return itemType;

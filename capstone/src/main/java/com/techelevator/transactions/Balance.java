@@ -30,6 +30,7 @@ public class Balance {
 //        }
         BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
         if (money.compareTo(ZERO) > 0) {
+            System.out.println( "No money added" );
             setBalance( money );
         } else if ( (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0) ) {
             setBalance(money);
