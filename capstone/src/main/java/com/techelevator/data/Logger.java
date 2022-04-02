@@ -32,19 +32,20 @@ public class Logger {
     }
 
     public void moneyFed(Scanner scan) {
-        this.writer.format(convertDateTime() + " MONEY FED: ");
-        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
+        String moneyFed = " MONEY FED: ";
+        this.writer.format("%22s %20s %8.2f",convertDateTime(), moneyFed ,menu.readBalance().getBalance());
+//        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
         menu.readBalance().feedMoney(scan);
-        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
+        this.writer.printf("%7s",menu.readBalance().getBalance().toString());
         this.writer.print("\n");
         this.writer.flush();
     }
 
     public void itemPurchase(String scan, Item item) {
-        this.writer.printf(convertDateTime() + " " +  menu.getInventory().getItemMap().get(scan).getItemName() + " " + menu.getInventory().getItemMap().get(scan).getSlotIdentifier());
-        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        this.writer.printf("%10s %18s %2s %8.2f",convertDateTime(),  menu.getInventory().getItemMap().get(scan).getItemName(), menu.getInventory().getItemMap().get(scan).getSlotIdentifier(),menu.readBalance().getBalance());
+//        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
         menu.readBalance().payForItem(item);
-        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        this.writer.printf("%2s",menu.readBalance().getBalance().toString());
         this.writer.print("\n");
         this.writer.flush();
     }
