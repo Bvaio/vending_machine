@@ -107,15 +107,7 @@ public class Menu {
 
     public static Map< String, Item> pullInventory() {
 //        inventory.createItemMap("catering.csv");
-//        inventory.createItemMap("catering1.csv");
-//        inventory.createItemMap("src/test/java/com/techelevator/testFiles/invalidFile_EmptyLines.csv");
-//        inventory.createItemMap("src/test/java/com/techelevator/testFiles/invalidFile_LessThanFourSplit.csv");
-//        inventory.createItemMap("src/test/java/com/techelevator/testFiles/invalidFile_NoPrices.csv");
-//        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv");
-//        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/invalidFile_LongLength.csv");
-//        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/invalidFile_OneTooManyCommas.csv");
-        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile00.csv");
-
+        inventory.createItemMap("catering1.csv");
 
         if ( inventory.invalidFilePathMapFailure() ) {
             exit();
