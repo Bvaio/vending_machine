@@ -79,12 +79,14 @@ public class Menu {
             case "S" :
                 sales.generateSalesLog();
                 System.out.println("Sales report generated at " + getLogger().convertDateTime());
+                showMenu();
                 break;
             case "E" :
                 exit();
                 break;
             default:
                 System.out.println( "None selected try again" );
+                showMenu();
         }
     }
 

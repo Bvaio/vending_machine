@@ -4,6 +4,8 @@ package com.techelevator.transactions;
 import com.techelevator.inventory.Item;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Balance {
@@ -13,6 +15,7 @@ public class Balance {
     private final BigDecimal FIVE = BigDecimal.valueOf(5);
     private final BigDecimal TEN = BigDecimal.valueOf(10);
     private final BigDecimal TWENTY = BigDecimal.valueOf(20);
+    private Map< String, Integer > returnedChange = new HashMap<>();
 //    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
 
 
@@ -37,15 +40,15 @@ public class Balance {
 
         if (money.compareTo(ZERO) == 0) {
             System.out.println( "No money added" );
-            setBalance( money );
+            raiseBalance( money );
         } else if ( (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0) ) {
-            setBalance(money);
+            raiseBalance(money);
         } else {
             System.out.println("Invalid denomination selected. Please try again.");
             feedMoney(scan);
         }
 //        Scanner scan = new Scanner( System.in );
-//        setBalance( money );
+//        raiseBalance( money );
 
         System.out.println( "\nNew Balance: $" + balance );
         System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
@@ -100,11 +103,11 @@ public class Balance {
                 balance = balance.subtract(BigDecimal.valueOf(1)); // increase dollars
                 dollars++;
                 continue;
-            } else if (balance.compareTo(BigDecimal.valueOf(0.25)) >= 1) {// increase quarters
+            } else if (balance.compareTo(BigDecimal.valueOf(0.25)) >= 0) {// increase quarters
                 balance = balance.subtract(BigDecimal.valueOf(0.25));
                 quarter++;
                 continue;
-            } else if (balance.compareTo(BigDecimal.valueOf(0.10)) >= 1) {// increases dimes
+            } else if (balance.compareTo(BigDecimal.valueOf(0.10)) >= 0) {// increases dimes
                 balance = balance.subtract(BigDecimal.valueOf(0.10));
                 dime++;
                 continue;
@@ -112,13 +115,35 @@ public class Balance {
                 nickel++;
                 balance = balance.subtract(BigDecimal.valueOf(0.05)); // increase nickels
             }
-        }   System.out.println("Dispensing " + dollars + " dollar(s), " + quarter + " quarter(s), " + dime + " dime(s), " + nickel + " nickel(s)");
+        }
+        returnedChange.put( "Dollar", dollars );
+        returnedChange.put( "Quarter", quarter );
+        returnedChange.put( "Dime", dime );
+        returnedChange.put( "Nickel", nickel );
     }
 
     public BigDecimal getBalance() {
         return balance.setScale(2, RoundingMode.CEILING);
     }
-    public void setBalance (BigDecimal money) {
+
+    public void raiseBalance(BigDecimal money) {
         balance = balance.add(money);
+    }
+
+    public void setBalance( BigDecimal money ) {
+        balance = money;
+    }
+
+    public Map<String, Integer> getReturnedChange() {
+        return returnedChange;
+    }
+
+    public void dispenseChange() {
+        dispenseMoney();
+        System.out.println(
+                "Dispensing " + returnedChange.get( "Dollar" ) + " dollar(s), " +
+                        returnedChange.get( "Quarter" ) + " quarter(s), " +
+                        returnedChange.get( "Dime" ) + " dime(s), " +
+                        returnedChange.get( "Nickel" ) + " nickel(s)" );
     }
 }
