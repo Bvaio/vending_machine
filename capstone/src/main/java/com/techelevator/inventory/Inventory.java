@@ -24,7 +24,7 @@ public class Inventory {
                 }
 
                 try {
-                    Item makeItem = new Item(readLineToArray[0], readLineToArray[1], readLineToArray[2], BigDecimal.valueOf(Double.parseDouble(readLineToArray[3])));
+                    Item makeItem = new Item(readLineToArray[0], readLineToArray[1], BigDecimal.valueOf(Double.parseDouble(readLineToArray[3]) ), readLineToArray[2] );
                     itemMap.put( makeItem.getSlotIdentifier(), makeItem );
                 } catch ( ArrayIndexOutOfBoundsException outOfBoundsException ) {
                     invalidFileError();
