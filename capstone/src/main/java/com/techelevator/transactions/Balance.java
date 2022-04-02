@@ -38,7 +38,8 @@ public class Balance {
 //        setBalance( money );
 
         System.out.println( "\nNew Balance: $" + balance );
-        System.out.print("Continue adding funds?\nYes ( Y )\nNo ( N )");
+        System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
+        System.out.print( "- - >  " );
         String choice = scan.nextLine().toUpperCase();
 
         while (!choice.equals("Y") && !choice.equals("N")) {
