@@ -54,7 +54,6 @@ public class Balance {
 //            purchaseMenu.showMenu();
             System.out.println("Returning to Purchase Menu");
         }
-
     }
 
 //    public void payForItem(Scanner scan, Inventory inventory) {

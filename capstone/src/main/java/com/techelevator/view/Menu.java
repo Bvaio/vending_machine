@@ -1,5 +1,6 @@
 package com.techelevator.view;
 
+import com.techelevator.data.Logger;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
