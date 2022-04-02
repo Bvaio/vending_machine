@@ -40,15 +40,15 @@ public class Balance {
 
         if (money.compareTo(ZERO) == 0) {
             System.out.println( "No money added" );
-            setBalance( money );
+            raiseBalance( money );
         } else if ( (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0) ) {
-            setBalance(money);
+            raiseBalance(money);
         } else {
             System.out.println("Invalid denomination selected. Please try again.");
             feedMoney(scan);
         }
 //        Scanner scan = new Scanner( System.in );
-//        setBalance( money );
+//        raiseBalance( money );
 
         System.out.println( "\nNew Balance: $" + balance );
         System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
@@ -103,11 +103,11 @@ public class Balance {
                 balance = balance.subtract(BigDecimal.valueOf(1)); // increase dollars
                 dollars++;
                 continue;
-            } else if (balance.compareTo(BigDecimal.valueOf(0.25)) >= 1) {// increase quarters
+            } else if (balance.compareTo(BigDecimal.valueOf(0.25)) >= 0) {// increase quarters
                 balance = balance.subtract(BigDecimal.valueOf(0.25));
                 quarter++;
                 continue;
-            } else if (balance.compareTo(BigDecimal.valueOf(0.10)) >= 1) {// increases dimes
+            } else if (balance.compareTo(BigDecimal.valueOf(0.10)) >= 0) {// increases dimes
                 balance = balance.subtract(BigDecimal.valueOf(0.10));
                 dime++;
                 continue;
@@ -125,8 +125,13 @@ public class Balance {
     public BigDecimal getBalance() {
         return balance.setScale(2, RoundingMode.CEILING);
     }
-    public void setBalance (BigDecimal money) {
+
+    public void raiseBalance(BigDecimal money) {
         balance = balance.add(money);
+    }
+
+    public void setBalance( BigDecimal money ) {
+        balance = money;
     }
 
     public Map<String, Integer> getReturnedChange() {
@@ -140,6 +145,5 @@ public class Balance {
                         returnedChange.get( "Quarter" ) + " quarter(s), " +
                         returnedChange.get( "Dime" ) + " dime(s), " +
                         returnedChange.get( "Nickel" ) + " nickel(s)" );
-
     }
 }
