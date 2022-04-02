@@ -3,6 +3,7 @@ package com.techelevator.transactions;
 
 import com.techelevator.inventory.Item;
 import java.math.BigDecimal;
+import java.util.Scanner;
 
 public class Balance {
     private static BigDecimal balance = BigDecimal.valueOf(0);

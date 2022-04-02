@@ -34,21 +34,24 @@ public class Logger {
         this.writer.close();
     }
 
-    public void convertDateTime(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/DD/yyyy hh:mm:ss a");
+    public String convertDateTime(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
         LocalDateTime dt = LocalDateTime.now();
+        return formatter.format(dt);
     }
 
-    public void printFormat(){
 
-    }
+
+//    public void printFormat(){
+//
+//    }
 
     //examples of what to log
 //        TEMPLATE
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
 //        LocalDateTime dt = LocalDateTime.now();
 //        System.out.format(formatter.format(dt) + " MONEY FED:");
-//        System.out.format("%12s","$" + trial);
-//        System.out.format("%8s","$" + trialTwo);
+//        System.out.format("%12s","$" + starting balance);
+//        System.out.format("%8s","$" + end balance/current);
 
 }
