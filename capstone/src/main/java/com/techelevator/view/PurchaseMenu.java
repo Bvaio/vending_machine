@@ -49,12 +49,13 @@ public class PurchaseMenu extends Menu {
 
                 String scan = getScan().nextLine().toUpperCase();
                 final BigDecimal previousBalance = readBalance().getBalance();
+                getLogger().writeItemPurchase(scan,readBalance().getBalance());
                 readBalance().payForItem( getPulledInventory().get( scan ) );
 
                 if ( !previousBalance.equals( readBalance().getBalance() ) ) {
                     userEats(getPulledInventory().get( scan ) );
                 }
-
+                getLogger().formatEndingBalance(readBalance().getBalance());
                 showMenu();
                 break;
             case "F":

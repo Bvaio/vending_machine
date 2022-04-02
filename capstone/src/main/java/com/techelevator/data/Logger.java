@@ -1,5 +1,8 @@
 package com.techelevator.data;
 
+import com.techelevator.inventory.Inventory;
+import com.techelevator.view.Menu;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class Logger {
     private File logFile;
     private PrintWriter writer;
+    Menu menu = new Menu();
 
     public Logger() {
         this.logFile = new File("Audit.txt");
@@ -32,18 +36,23 @@ public class Logger {
         this.writer.flush();
     }
 
-    public void formatStartingBalance(BigDecimal amount) {
-        this.writer.printf("%12s",amount);
+    public void writeItemPurchase(String scan, BigDecimal balance) {
+        this.writer.printf(convertDateTime() + " " +  menu.getInventory().getItemMap().get(scan).getItemName() + " " + menu.getInventory().getItemMap().get(scan).getSlotIdentifier());
+        this.formatStartingBalance(balance);
         this.writer.flush();
     }
-
+//    public void salesList(String scan){
+//        BigDecimal grossSales = BigDecimal.valueOf(0);
+//        this.salesWriter.printf(menu.getInventory().getItemMap().get(scan).getItemName());
+//        grossSales = grossSales.add(menu.getInventory().getItemMap().get(scan).getItemPrice());
+//    }
+    public void formatStartingBalance(BigDecimal amount) {
+        this.writer.printf("%15s",amount);
+        this.writer.flush();
+    }
     public void formatEndingBalance(BigDecimal balance){
         this.writer.printf("%8s", balance + "\n");
         this.writer.flush();
-    }
-
-    public void close(){
-        this.writer.close();
     }
 
     public String convertDateTime(){
@@ -51,6 +60,11 @@ public class Logger {
         LocalDateTime dt = LocalDateTime.now();
         return formatter.format(dt);
     }
+    public void close(){
+        this.writer.close();
+    }
+
+
 
 
 
