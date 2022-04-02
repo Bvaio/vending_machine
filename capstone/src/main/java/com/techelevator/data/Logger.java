@@ -4,15 +4,17 @@ import com.techelevator.inventory.Item;
 import com.techelevator.view.Menu;
 
 import java.io.*;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Logger {
     private File logFile;
     private PrintWriter writer;
-
     Menu menu = new Menu();
+
 
     public Logger() {
         this.logFile = new File("Audit.txt");
@@ -32,29 +34,26 @@ public class Logger {
     }
 
     public void moneyFed(Scanner scan) {
-        String moneyFed = " MONEY FED: ";
-        this.writer.format("%22s %20s %8.2f",convertDateTime(), moneyFed ,menu.readBalance().getBalance());
-//        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
+        String moneyFed = "MONEY FED: ";
+        this.writer.format("%-23s %-22s %6s",convertDateTime(), moneyFed ,showCurrencyValue());
         menu.readBalance().feedMoney(scan);
-        this.writer.printf("%7s",menu.readBalance().getBalance().toString());
+        this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
         this.writer.flush();
     }
 
     public void itemPurchase(String scan, Item item) {
-        this.writer.printf("%10s %18s %2s %8.2f",convertDateTime(),  menu.getInventory().getItemMap().get(scan).getItemName(), menu.getInventory().getItemMap().get(scan).getSlotIdentifier(),menu.readBalance().getBalance());
-//        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        this.writer.printf("%-23s %-19s %-2s %6s",convertDateTime(),  menu.getInventory().getItemMap().get(scan).getItemName(), menu.getInventory().getItemMap().get(scan).getSlotIdentifier(),showCurrencyValue());
         menu.readBalance().payForItem(item);
-        this.writer.printf("%2s",menu.readBalance().getBalance().toString());
+        this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
         this.writer.flush();
     }
-
     public void moneyDispensed(){
-        this.writer.printf(convertDateTime() + " " + "CHANGE GIVEN: ");
-        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
-        menu.readBalance().dispenseChange(); // dispenseMoney to dispenseChange
-        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        String changeGiven = "CHANGE GIVEN: ";
+        this.writer.printf("%-23s %-22s %6s",convertDateTime(),changeGiven,showCurrencyValue());
+        menu.readBalance().dispenseMoney();
+        this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
         this.writer.flush();
     }
@@ -63,6 +62,12 @@ public class Logger {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
         LocalDateTime dt = LocalDateTime.now();
         return formatter.format(dt);
+    }
+
+    public String showCurrencyValue() {
+        Locale currentLocale = Locale.getDefault();
+        NumberFormat currencyConversion = NumberFormat.getCurrencyInstance(currentLocale);
+        return currencyConversion.format(menu.readBalance().getBalance());
     }
 
     public void close(){
