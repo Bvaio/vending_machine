@@ -72,7 +72,7 @@ public class Menu {
     }
 
     public void showInventory() {
-        System.out.println("\nOur currently inventory");
+        System.out.println("\nOur current inventory");
         sortedInventoryDisplay();
     }
 

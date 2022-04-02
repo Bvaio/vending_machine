@@ -6,13 +6,18 @@ import com.techelevator.view.Menu;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Scanner;
 
 
 public class Logger {
     private File logFile;
+    private File salesLog;
     private PrintWriter writer;
     Menu menu = new Menu();
 
@@ -34,19 +39,28 @@ public class Logger {
     }
 
 
-    public void salesReport() {
+    public void salesReport(){
         BigDecimal grossSales = BigDecimal.valueOf(0);
-        try (PrintWriter salesLogger = new PrintWriter(convertDateTime() + " sales-report.txt")) {
+        DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm:ss a");
+        LocalDateTime dateAndTime = LocalDateTime.now().withNano(0);
+        formatterDate.format(dateAndTime);
+        String date = dateAndTime.toString().replaceAll(":","-");
+        date = date.replaceAll("T","_");
+        String fileName ="/receipts/" + date + "_sales-report.txt";
+        this.salesLog = new File(fileName);
+        try {
+            this.writer = new PrintWriter(new FileWriter(this.salesLog,true));
             for (String item : menu.getInventory().getItemMap().keySet()) {
                 if (menu.getInventory().getItemMap().get(item).getInventoryCount() < 7) {
-                    salesLogger.println(menu.getInventory().getItemMap().get(item).getItemName() + "," + (7 - menu.getInventory().getItemMap().get(item).getInventoryCount()));
+                    writer.println(menu.getInventory().getItemMap().get(item).getItemName() + "," + (7 - menu.getInventory().getItemMap().get(item).getInventoryCount()));
                     grossSales = grossSales.add(menu.getInventory().getItemMap().get(item).getItemPrice());
                 }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Nope!");
+            } writer.println("TOTAL SALES: $" + grossSales);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
+
+             }
 
     public void moneyFed(Scanner scan) {
         this.writer.format(convertDateTime() + " MONEY FED: ");
