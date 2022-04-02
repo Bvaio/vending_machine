@@ -18,7 +18,7 @@ public class PurchaseMenu extends Menu {
         System.out.println("\nPlease select from the following options:");
         System.out.println("Feed Money ( M )");
         System.out.println("Select Item ( S )");
-        System.out.println("Finish Transaction ( F )");
+        System.out.println("Finish Transaction & Return to Main Menu ( F )");
         System.out.println("Current balance: $" + readBalance().getBalance());
         System.out.print( "- - >  " );
 

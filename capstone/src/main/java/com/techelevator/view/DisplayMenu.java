@@ -27,6 +27,7 @@ public class DisplayMenu extends Menu {
                 break;
             default:
                 System.out.println("Invalid selection, please try again.");
+                showMenu();
         }
     }
 }
