@@ -28,7 +28,13 @@ public class Balance {
 //        if (selection.equalsIgnoreCase("P")) { // balance shouldn't do this menu should
 //            purchaseMenu.showMenu();
 //        }
-        BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
+        BigDecimal money = null;
+        try {
+            money = BigDecimal.valueOf(Integer.parseInt(selection));
+        } catch ( NumberFormatException cannotParseIntoBigDecimal ) {
+            money = ZERO;
+        }
+
         if (money.compareTo(ZERO) == 0) {
             System.out.println( "No money added" );
             setBalance( money );
@@ -112,7 +118,7 @@ public class Balance {
     public BigDecimal getBalance() {
         return balance.setScale(2, RoundingMode.CEILING);
     }
-    public static void setBalance (BigDecimal money) {
+    public void setBalance (BigDecimal money) {
         balance = balance.add(money);
     }
 }
