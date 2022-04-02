@@ -9,7 +9,7 @@ public class Item {
     private BigDecimal itemPrice;
     private int inventoryCount = 7;
 
-    public Item(String slotIdentifier, String itemName, String itemType, BigDecimal itemPrice) {
+    public Item(String slotIdentifier, String itemName, BigDecimal itemPrice,  String itemType ) {
         this.slotIdentifier = slotIdentifier;
         this.itemName = itemName;
         this.itemType = itemType;

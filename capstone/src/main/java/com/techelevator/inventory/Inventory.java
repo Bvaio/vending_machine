@@ -12,32 +12,39 @@ public class Inventory {
     private boolean invalidFile = false;
 
     public void createItemMap(String filePath) {
-        File readFile = new File(filePath);
-        try(Scanner scanReadFile = new Scanner(readFile)) {
-            while(scanReadFile.hasNextLine()) {
-                String readLine = scanReadFile.nextLine();
-                String[] readLineToArray = readLine.split("," );
+        boolean isValidFileType = filePath.substring( filePath.length() - 4 ).equals( ".csv" );
 
-                if ( readLineToArray.length > 4 ) {
-                    invalidFileError();
-                    break;
+        if ( isValidFileType ) {
+            File readFile = new File(filePath);
+            try (Scanner scanReadFile = new Scanner(readFile)) {
+                while (scanReadFile.hasNextLine()) {
+                    String readLine = scanReadFile.nextLine();
+                    String[] readLineToArray = readLine.split(",");
+
+                    if (readLineToArray.length > 4) {
+                        invalidFileError();
+                        break;
+                    }
+
+                    try {
+                        Item makeItem = new Item(readLineToArray[0], readLineToArray[1], BigDecimal.valueOf(Double.parseDouble(readLineToArray[3])), readLineToArray[2]);
+                        itemMap.put(makeItem.getSlotIdentifier(), makeItem);
+                    } catch (ArrayIndexOutOfBoundsException outOfBoundsException) {
+                        invalidFileError();
+                        break;
+                    } catch (NumberFormatException numberFormatException) {
+                        invalidFileError();
+                        break;
+                    }
+
                 }
-
-                try {
-                    Item makeItem = new Item(readLineToArray[0], readLineToArray[1], readLineToArray[2], BigDecimal.valueOf(Double.parseDouble(readLineToArray[3])));
-                    itemMap.put( makeItem.getSlotIdentifier(), makeItem );
-                } catch ( ArrayIndexOutOfBoundsException outOfBoundsException ) {
-                    invalidFileError();
-                    break;
-                } catch ( NumberFormatException numberFormatException ) {
-                    invalidFileError();
-                    break;
-                }
-
+            } catch (FileNotFoundException e) {
+                invalidFileError();
             }
-        } catch (FileNotFoundException e) {
+        } else {
             invalidFileError();
         }
+
     }
 
     public Map<String, Item> getItemMap() {
@@ -53,5 +60,9 @@ public class Inventory {
 
         invalidFile = true;
         System.out.println( invalidFileError );
+    }
+
+    public boolean isInvalidFile() {
+        return invalidFile;
     }
 }
