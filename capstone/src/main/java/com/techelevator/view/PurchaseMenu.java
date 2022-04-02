@@ -1,4 +1,4 @@
-package com.techelevator.data;
+package com.techelevator.view;
 
 
 import com.techelevator.inventory.Item;
