@@ -58,4 +58,11 @@ public class ItemTest {
             assertEquals( testStock, inventory.getItemMap().get( key ).getInventoryCount() );
         }
     }
+
+    @Test
+    public void item_contains_out_of_stock_in_name() {
+
+    }
+
+
 }
