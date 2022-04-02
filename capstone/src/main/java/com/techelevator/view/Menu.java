@@ -106,10 +106,10 @@ public class Menu {
     }
 
     public static Map< String, Item> pullInventory() {
-//        inventory.createItemMap("catering.csv");
+        inventory.createItemMap("catering.csv");
 //        inventory.createItemMap("catering1.csv");
 //        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv" );
-        inventory.createItemMap( "Audit.txt" );
+//        inventory.createItemMap( "Audit.txt" );
 
 
         if ( inventory.invalidFilePathMapFailure() ) {
