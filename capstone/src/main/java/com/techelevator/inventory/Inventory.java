@@ -54,4 +54,8 @@ public class Inventory {
         invalidFile = true;
         System.out.println( invalidFileError );
     }
+
+    public boolean isInvalidFile() {
+        return invalidFile;
+    }
 }
