@@ -49,10 +49,9 @@ public class PurchaseMenu extends Menu {
 
                 String scan = getScan().nextLine().toUpperCase();
                 final BigDecimal previousBalance = readBalance().getBalance();
-<<<<<<< HEAD
+
                 getLogger().writeItemPurchase(scan,readBalance().getBalance());
                 readBalance().payForItem( getPulledInventory().get( scan ) );
-=======
 
                 try {
                     readBalance().payForItem( getPulledInventory().get( scan ) );
@@ -60,7 +59,6 @@ public class PurchaseMenu extends Menu {
                     System.out.println( "Item not in list");
                     showMenu();
                 }
->>>>>>> a04995de1dac45e468943239591c21737654308a
 
                 if ( !previousBalance.equals( readBalance().getBalance() ) ) {
                     userEats(getPulledInventory().get( scan ) );
