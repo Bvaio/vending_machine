@@ -1,5 +1,6 @@
 package com.techelevator.view;
 
+import com.techelevator.data.Logger;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
@@ -98,7 +99,8 @@ public class Menu {
     }
 
     public static Map< String, Item> pullInventory() {
-        inventory.createItemMap("catering.csv");
+//        inventory.createItemMap("catering.csv");
+        inventory.createItemMap("catering1.csv");
         return inventory.getItemMap();
     }
 

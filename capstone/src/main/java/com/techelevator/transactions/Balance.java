@@ -21,7 +21,7 @@ public class Balance {
         System.out.println("$0\n$1\n$5\n$10\n$20");
 //        System.out.println("( P ) to quit and return to Purchase Menu");
         System.out.println("Current balance: $" + getBalance());
-        System.out.print( "- - >  " );
+        System.out.print("- - >  ");
 
         String selection = scan.nextLine();
 
@@ -29,7 +29,9 @@ public class Balance {
 //            purchaseMenu.showMenu();
 //        }
         BigDecimal money = BigDecimal.valueOf(Integer.parseInt(selection));
-        if (money.compareTo(ZERO) > 0 && (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
+        if (money.compareTo(ZERO) > 0) {
+            setBalance( money );
+        } else if ( (money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0) ) {
             setBalance(money);
         } else {
             System.out.println("Invalid denomination selected. Please try again.");
