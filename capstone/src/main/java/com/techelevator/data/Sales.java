@@ -1,4 +1,4 @@
 package com.techelevator.data;
 
-public class Sales {
+public class Sales extends Logger{
 }

@@ -1,7 +1,10 @@
-package com.techelevator.view;
+package com.techelevator.data;
 
 
 import com.techelevator.inventory.Item;
+import com.techelevator.view.Menu;
+
+import java.math.BigDecimal;
 import java.util.*;
 
 public class PurchaseMenu extends Menu {
@@ -37,7 +40,6 @@ public class PurchaseMenu extends Menu {
 
                 System.out.println("\nWhat would you like to purchase");
                 String scan = getScan().nextLine().toUpperCase();
-
                 readBalance().payForItem( getPulledInventory().get( scan ) );
                 showMenu();
                 break;

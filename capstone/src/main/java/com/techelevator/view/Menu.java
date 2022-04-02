@@ -1,13 +1,13 @@
 package com.techelevator.view;
 
+import com.techelevator.data.Logger;
+import com.techelevator.data.PurchaseMenu;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Menu {
@@ -44,6 +44,10 @@ public class Menu {
 
     public Balance readBalance() {
         return balance;
+    }
+
+    public String printBalance() {
+        return new BigDecimal(String.valueOf(balance)).toString();
     }
 
     public DisplayMenu getDisplayMenu() {
@@ -103,6 +107,10 @@ public class Menu {
         readBalance().dispenseMoney();
         System.exit( 0 );
     }
+
+//    public Logger getLogger() {
+//        return log;
+//    }
 
 }
 
