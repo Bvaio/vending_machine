@@ -13,11 +13,12 @@ public class BalanceTest {
 
     @Before
     public void test (){
-        balance = new Balance();
+
     }
 
     @Test
     public void increase_balance_by_134_increases_starting_balance_100_by_134() {
+        balance = new Balance();
         BigDecimal startingBalance = BigDecimal.valueOf( 100 );
         BigDecimal addToBalance = BigDecimal.valueOf( 134 );
         BigDecimal expectedBalance = startingBalance.add( addToBalance ).setScale( 2, RoundingMode.CEILING );
@@ -30,10 +31,19 @@ public class BalanceTest {
 
     @Test
     public void dispenseMoney_balance_100_dispenses_only_dollars() {
+        balance = new Balance();
         BigDecimal startingBalance = BigDecimal.valueOf( 100 );
-
         balance.setBalance( startingBalance );
+        balance.dispenseMoney();
 
+        int ExpectedDollarAmount = 100;
+        int ExpectedQuarterAmount = 0;
+        int ExpectedDimeAmount = 0;
+        int ExpectedNickelAmount = 0;
 
+        assertEquals( ExpectedDollarAmount, balance.getReturnedChange().get( "Dollar" ).intValue() );
+        assertEquals( ExpectedQuarterAmount, balance.getReturnedChange().get( "Quarter" ).intValue() );
+        assertEquals( ExpectedDimeAmount, balance.getReturnedChange().get( "Dime" ).intValue() );
+        assertEquals( ExpectedNickelAmount, balance.getReturnedChange().get( "Nickel" ).intValue() );
     }
 }

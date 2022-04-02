@@ -4,6 +4,8 @@ package com.techelevator.transactions;
 import com.techelevator.inventory.Item;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Balance {
@@ -13,6 +15,7 @@ public class Balance {
     private final BigDecimal FIVE = BigDecimal.valueOf(5);
     private final BigDecimal TEN = BigDecimal.valueOf(10);
     private final BigDecimal TWENTY = BigDecimal.valueOf(20);
+    private Map< String, Integer > returnedChange = new HashMap<>();
 //    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
 
 
@@ -112,7 +115,11 @@ public class Balance {
                 nickel++;
                 balance = balance.subtract(BigDecimal.valueOf(0.05)); // increase nickels
             }
-        }   System.out.println("Dispensing " + dollars + " dollar(s), " + quarter + " quarter(s), " + dime + " dime(s), " + nickel + " nickel(s)");
+        }
+        returnedChange.put( "Dollar", dollars );
+        returnedChange.put( "Quarter", quarter );
+        returnedChange.put( "Dime", dime );
+        returnedChange.put( "Nickel", nickel );
     }
 
     public BigDecimal getBalance() {
@@ -120,5 +127,19 @@ public class Balance {
     }
     public void setBalance (BigDecimal money) {
         balance = balance.add(money);
+    }
+
+    public Map<String, Integer> getReturnedChange() {
+        return returnedChange;
+    }
+
+    public void dispenseChange() {
+        dispenseMoney();
+        System.out.println(
+                "Dispensing " + returnedChange.get( "Dollar" ) + " dollar(s), " +
+                        returnedChange.get( "Quarter" ) + " quarter(s), " +
+                        returnedChange.get( "Dime" ) + " dime(s), " +
+                        returnedChange.get( "Nickel" ) + " nickel(s)" );
+
     }
 }
