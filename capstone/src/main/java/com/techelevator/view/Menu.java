@@ -102,10 +102,6 @@ public class Menu {
 //        inventory.createItemMap("catering1.csv");
 //        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv" );
 //        inventory.createItemMap( "Audit.txt" );
-<<<<<<< HEAD
-=======
-
->>>>>>> 5cdb65aaabf57f4c4ba7c498a18518a96e6db4e0
 
         if ( inventory.invalidFilePathMapFailure() ) {
             exit();

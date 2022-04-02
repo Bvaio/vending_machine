@@ -37,7 +37,7 @@ public class Sales extends Logger{
                 grossSalesFromItem = grossSalesFromItem.add(BigDecimal.valueOf(7 - menu.getInventory().getItemMap().get(item).getInventoryCount()).multiply(menu.getInventory().getItemMap().get(item).getItemPrice()));
             } counter++;
             if (counter == menu.getInventory().getItemMap().size()) {
-                this.salesWriter.println(grossSalesFromItem);
+                this.salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
                 this.salesWriter.flush();
             }
         }

@@ -1,0 +1,3 @@
+Burrito,1
+After Lunch Mints,1
+TOTAL SALES: $6.20
