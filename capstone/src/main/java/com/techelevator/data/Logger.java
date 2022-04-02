@@ -1,12 +1,15 @@
 package com.techelevator.data;
 
 import com.techelevator.inventory.Inventory;
+import com.techelevator.inventory.Item;
 import com.techelevator.view.Menu;
 
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
 
 public class Logger {
     private File logFile;
@@ -30,36 +33,82 @@ public class Logger {
         }
     }
 
-    public void writeMoneyFed(BigDecimal balance) {
-        this.writer.printf(convertDateTime() + " MONEY FED:");
-        formatStartingBalance(balance);
+
+    public void salesReport() {
+        try (PrintWriter salesLogger = new PrintWriter("sales-report.txt")) {
+            for (String item : menu.getInventory().getItemMap().keySet()) {
+                if (menu.getInventory().getItemMap().get(item).getInventoryCount() < 7) {
+                    salesLogger.println(menu.getInventory().getItemMap().get(item).getItemName() + ", " + (7 - menu.getInventory().getItemMap().get(item).getInventoryCount()));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Nope!");
+        }
+    }
+
+    public void moneyFed(Scanner scan) {
+        this.writer.format(convertDateTime() + " MONEY FED: ");
+        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
+        menu.readBalance().feedMoney(scan);
+        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
+        this.writer.print("\n");
+        this.writer.flush();
+    }
+    //
+//    public void writeMoneyFed(Scanner scan) {
+//        this.writer.format(convertDateTime() + " MONEY FED: ");
+//        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+//        menu.readBalance().feedMoney(scan);
+//        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+//        this.writer.print("\n");
+//        this.writer.flush();
+//    }
+
+//    public double convertBalanceToString(){
+//        return menu.readBalance().getBalance().doubleValue();
+//    }
+
+    public void itemPurchase(String scan, Item item) {
+        this.writer.printf(convertDateTime() + " " +  menu.getInventory().getItemMap().get(scan).getItemName() + " " + menu.getInventory().getItemMap().get(scan).getSlotIdentifier());
+        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        menu.readBalance().payForItem(item);
+        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        this.writer.print("\n");
+        this.writer.flush();
+    }
+    public void moneyDispensed(){
+        this.writer.printf(convertDateTime() + " " + "CHANGE GIVEN: ");
+        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        menu.readBalance().dispenseMoney();
+        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
+        this.writer.print("\n");
         this.writer.flush();
     }
 
-    public void writeItemPurchase(String scan, BigDecimal balance) {
-        this.writer.printf(convertDateTime() + " " +  menu.getInventory().getItemMap().get(scan).getItemName() + " " + menu.getInventory().getItemMap().get(scan).getSlotIdentifier());
-        this.formatStartingBalance(balance);
-        this.writer.flush();
+    public void salesLog(){
+
     }
 //    public void salesList(String scan){
 //        BigDecimal grossSales = BigDecimal.valueOf(0);
 //        this.salesWriter.printf(menu.getInventory().getItemMap().get(scan).getItemName());
 //        grossSales = grossSales.add(menu.getInventory().getItemMap().get(scan).getItemPrice());
 //    }
-    public void formatStartingBalance(BigDecimal amount) {
-        this.writer.printf("%15s",amount);
-        this.writer.flush();
-    }
-    public void formatEndingBalance(BigDecimal balance){
-        this.writer.printf("%8s", balance + "\n");
-        this.writer.flush();
-    }
+//    public PrintWriter formatStartingBalance(BigDecimal amount) {
+//        return this.writer.printf("%15s",amount);
+//    }
+
+//    public void formatEndingBalance(BigDecimal balance){
+//        this.writer.printf(menu.readBalance().getBalance().toString());
+//        this.writer.print("\n");
+//        this.writer.flush();
+//    }
 
     public String convertDateTime(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
         LocalDateTime dt = LocalDateTime.now();
         return formatter.format(dt);
     }
+
 
 
     public void close(){

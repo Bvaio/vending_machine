@@ -27,12 +27,8 @@ public class PurchaseMenu extends Menu {
         switch (menuChoice) {
 
             case "M" :
-
-
-                getLogger().writeMoneyFed(readBalance().getBalance());
-                readBalance().feedMoney( getScan() );
-                getLogger().formatEndingBalance(readBalance().getBalance());
-//                getLogger().formatEndingBalance(readBalance().getBalance());
+//                readBalance().feedMoney( getScan() );
+                getLogger().moneyFed(getScan());
                 showMenu();
                 break;
             case "S":
@@ -50,24 +46,21 @@ public class PurchaseMenu extends Menu {
                 String scan = getScan().nextLine().toUpperCase();
                 final BigDecimal previousBalance = readBalance().getBalance();
 
-                getLogger().writeItemPurchase(scan,readBalance().getBalance());
-                readBalance().payForItem( getPulledInventory().get( scan ) );
-
                 try {
-                    readBalance().payForItem( getPulledInventory().get( scan ) );
+                    getLogger().itemPurchase(scan, getPulledInventory().get(scan));
+//                    readBalance().payForItem( getPulledInventory().get( scan ) );
                 } catch ( NullPointerException notInListItem ) {
                     System.out.println( "Item not in list");
                     showMenu();
                 }
-
                 if ( !previousBalance.equals( readBalance().getBalance() ) ) {
                     userEats(getPulledInventory().get( scan ) );
                 }
-                getLogger().formatEndingBalance(readBalance().getBalance());
                 showMenu();
                 break;
             case "F":
-                readBalance().dispenseMoney();
+//                readBalance().dispenseMoney();
+                getLogger().moneyDispensed();
                 System.out.println( "Current Balance: " + readBalance().getBalance() );
                 System.out.println( "Returning to Main Menu\n ");
                 super.showMenu();

@@ -79,8 +79,10 @@ public class Menu {
             case "P" :
                 purchaseMenu.showMenu();
                 break;
-//            case "S" :
-//                sales.getSales();
+            case "S" :
+                getLogger().salesReport();
+                System.out.println("Sales report generated at " + getLogger().convertDateTime());
+                break;
             case "E" :
                 exit();
                 break;
