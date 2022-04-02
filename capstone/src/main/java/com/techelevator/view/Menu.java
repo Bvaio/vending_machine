@@ -14,7 +14,6 @@ public class Menu {
     private static Inventory inventory = new Inventory(); // changed to static made it work?
     private static Balance balance = new Balance();
     private static Map< String, Item > pulledInventory = pullInventory();
-
     private static DisplayMenu displayMenu = new DisplayMenu();
     private static PurchaseMenu purchaseMenu = new PurchaseMenu();
     private static Sales sales = new Sales();
@@ -38,15 +37,14 @@ public class Menu {
     public void selectMenu( String choice ) {
         switch( choice ) {
             case "D" :
-                displayMenu.showMenu();
+                displayMenu.displayMenu();
                 break;
             case "P" :
-                purchaseMenu.showMenu();
+                purchaseMenu.purchaseMenu();
                 break;
             case "S" :
                 sales.generateSalesLog();
                 System.out.println("Sales report generated at " + getLogger().convertDateTime());
-                sales.closeSalesWriter();
                 showMenu();
                 break;
             case "E" :
@@ -55,6 +53,7 @@ public class Menu {
             default:
                 System.out.println( "None selected try again" );
                 showMenu();
+                break;
         }
     }
 
