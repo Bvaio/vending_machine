@@ -39,8 +39,15 @@ public class PurchaseMenu extends Menu {
                 showInventory();
 
                 System.out.println("\nWhat would you like to purchase");
+
                 String scan = getScan().nextLine().toUpperCase();
+                final BigDecimal previousBalance = readBalance().getBalance();
                 readBalance().payForItem( getPulledInventory().get( scan ) );
+
+                if ( !previousBalance.equals( readBalance().getBalance() ) ) {
+                    userEats(getPulledInventory().get( scan ) );
+                }
+
                 showMenu();
                 break;
             case "F":
@@ -54,7 +61,27 @@ public class PurchaseMenu extends Menu {
                 showMenu();
         }
     }
+
+    public void userEats( Item item ) {
+        final String MUNCHY = "munchy";
+        final String SANDWICH = "sandwich";
+        final String DRINK = "drink";
+        final String DESSERT = "dessert";
+
+        if ( item.getItemType().equalsIgnoreCase( MUNCHY ) ) {
+            System.out.println( "Munchy, Munchy, so Good!" );
+        }
+        else if ( item.getItemType().equalsIgnoreCase( SANDWICH ) ) {
+            System.out.println( "Sandwich So Delicious, Yum!" );
+        }
+        else if ( item.getItemType().equalsIgnoreCase( DRINK ) ) {
+            System.out.println( "Drinky, Drinky, Slurp Slurp!" );
+        }
+        else if ( item.getItemType().equalsIgnoreCase( DESSERT ) ) {
+            System.out.println( "Sugar, Sugar, so Sweet!" );
+        }
+        else {
+            System.out.println( "That was a good " + item.getItemType() );
+        }
+    }
 }
-
-
-
