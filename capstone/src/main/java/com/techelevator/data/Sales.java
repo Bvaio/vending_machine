@@ -52,4 +52,8 @@ public class Sales extends Logger{
         date = date.replaceAll("T","_");
         return pathToReport + date + "_sales-report.txt";
     }
+
+    public void closeSalesWriter(){
+        this.salesWriter.close();
+    }
 }

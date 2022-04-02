@@ -35,39 +35,6 @@ public class Menu {
         selectMenu( menuChoice );
     }
 
-    public Scanner getScan() {
-        return scan;
-    }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public Balance readBalance() {
-        return balance;
-    }
-
-    public DisplayMenu getDisplayMenu() {
-        return displayMenu;
-    }
-
-    public Sales getSales() {
-        return sales;
-    }
-
-    public PurchaseMenu getPurchaseMenu() {
-        return purchaseMenu;
-    }
-
-    public static Map<String, Item> getPulledInventory() {
-        return pulledInventory;
-    }
-
-    public void showInventory() {
-        System.out.println("\nOur current inventory");
-        sortedInventoryDisplay();
-    }
-
     public void selectMenu( String choice ) {
         switch( choice ) {
             case "D" :
@@ -79,6 +46,7 @@ public class Menu {
             case "S" :
                 sales.generateSalesLog();
                 System.out.println("Sales report generated at " + getLogger().convertDateTime());
+                sales.closeSalesWriter();
                 showMenu();
                 break;
             case "E" :
@@ -112,6 +80,39 @@ public class Menu {
 
     public static void exit() {// exits program
         System.exit( 0 );
+    }
+
+    public Scanner getScan() {
+        return scan;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public Balance readBalance() {
+        return balance;
+    }
+
+    public DisplayMenu getDisplayMenu() {
+        return displayMenu;
+    }
+
+    public Sales getSales() {
+        return sales;
+    }
+
+    public PurchaseMenu getPurchaseMenu() {
+        return purchaseMenu;
+    }
+
+    public static Map<String, Item> getPulledInventory() {
+        return pulledInventory;
+    }
+
+    public void showInventory() {
+        System.out.println("\nOur current inventory");
+        sortedInventoryDisplay();
     }
 
     public Logger getLogger() {

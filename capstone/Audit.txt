@@ -1,1 +1,31 @@
 
+04/02/2022 07:33:45 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:33:50 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:33:52 PM  After Lunch Mint    D4  $8.65   $7.30
+04/02/2022 07:33:54 PM  Preengles           D1  $7.30   $4.95
+04/02/2022 07:33:55 PM  CHANGE GIVEN:           $4.95   $0.00
+04/02/2022 07:34:25 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:34:29 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:34:30 PM  After Lunch Mint    D4  $8.65   $7.30
+04/02/2022 07:34:31 PM  Preengles           D1  $7.30   $4.95
+04/02/2022 07:34:33 PM  CHANGE GIVEN:           $4.95   $0.00
+04/02/2022 07:34:50 PM  CHANGE GIVEN:           $0.00   $0.00
+04/02/2022 07:35:16 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:35:19 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:35:21 PM  After Lunch Mint    D4  $8.65   $7.30
+04/02/2022 07:35:22 PM  Preengles           D1  $7.30   $4.95
+04/02/2022 07:35:23 PM  CHANGE GIVEN:           $4.95   $0.00
+04/02/2022 07:35:44 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:35:46 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:35:47 PM  After Lunch Mint    D4  $8.65   $7.30
+04/02/2022 07:35:49 PM  Preengles           D1  $7.30   $4.95
+04/02/2022 07:35:50 PM  CHANGE GIVEN:           $4.95   $0.00
+04/02/2022 07:39:25 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:39:36 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:39:41 PM  CHANGE GIVEN:           $8.65   $0.00
+04/02/2022 07:41:28 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:41:32 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:41:37 PM  CHANGE GIVEN:           $8.65   $0.00
+04/02/2022 07:42:19 PM  MONEY FED:              $0.00  $10.00
+04/02/2022 07:42:27 PM  After Lunch Mint    D4 $10.00   $8.65
+04/02/2022 07:42:28 PM  CHANGE GIVEN:           $8.65   $0.00
