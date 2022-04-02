@@ -99,7 +99,8 @@ public class Menu {
     }
 
     public static Map< String, Item> pullInventory() {
-        inventory.createItemMap("catering.csv");
+//        inventory.createItemMap("catering.csv");
+        inventory.createItemMap("catering1.csv");
         return inventory.getItemMap();
     }
 
