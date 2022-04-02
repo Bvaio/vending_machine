@@ -35,10 +35,12 @@ public class Logger {
 
 
     public void salesReport() {
-        try (PrintWriter salesLogger = new PrintWriter("sales-report.txt")) {
+        BigDecimal grossSales = BigDecimal.valueOf(0);
+        try (PrintWriter salesLogger = new PrintWriter(convertDateTime() + " sales-report.txt")) {
             for (String item : menu.getInventory().getItemMap().keySet()) {
                 if (menu.getInventory().getItemMap().get(item).getInventoryCount() < 7) {
-                    salesLogger.println(menu.getInventory().getItemMap().get(item).getItemName() + ", " + (7 - menu.getInventory().getItemMap().get(item).getInventoryCount()));
+                    salesLogger.println(menu.getInventory().getItemMap().get(item).getItemName() + "," + (7 - menu.getInventory().getItemMap().get(item).getInventoryCount()));
+                    grossSales = grossSales.add(menu.getInventory().getItemMap().get(item).getItemPrice());
                 }
             }
         } catch (FileNotFoundException e) {

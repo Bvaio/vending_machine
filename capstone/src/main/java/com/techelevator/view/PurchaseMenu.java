@@ -46,9 +46,6 @@ public class PurchaseMenu extends Menu {
                 String scan = getScan().nextLine().toUpperCase();
                 final BigDecimal previousBalance = readBalance().getBalance();
 
-                getLogger().writeItemPurchase(scan,readBalance().getBalance());
-//                readBalance().payForItem( getPulledInventory().get( scan ) );
-
                 try {
                     getLogger().itemPurchase(scan, getPulledInventory().get(scan));
 //                    readBalance().payForItem( getPulledInventory().get( scan ) );
@@ -62,7 +59,6 @@ public class PurchaseMenu extends Menu {
                 showMenu();
                 break;
             case "F":
-//                readBalance().dispenseMoney();
                 getLogger().moneyDispensed();
                 System.out.println( "Current Balance: " + readBalance().getBalance() );
                 System.out.println( "Returning to Main Menu\n ");
