@@ -1,6 +1,7 @@
 package com.techelevator.data;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,7 +27,17 @@ public class Logger {
     }
 
     public void write(String logMessage) {
-        this.writer.println(logMessage);
+        this.writer.printf(logMessage);
+        this.writer.flush();
+    }
+
+    public void formatStartingBalance(BigDecimal amount) {
+        this.writer.printf("%12s",amount);
+        this.writer.flush();
+    }
+
+    public void formatEndingBalance(BigDecimal balance){
+        this.writer.printf("%8s", balance + "\n");
         this.writer.flush();
     }
 
@@ -39,6 +50,8 @@ public class Logger {
         LocalDateTime dt = LocalDateTime.now();
         return formatter.format(dt);
     }
+
+
 
 
 

@@ -5,10 +5,12 @@ import com.techelevator.inventory.Item;
 import com.techelevator.view.Menu;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 public class PurchaseMenu extends Menu {
     private Map< String , Item > pulledInventory = pullInventory();
+
 
     @Override
     public void showMenu() {
@@ -25,7 +27,18 @@ public class PurchaseMenu extends Menu {
         switch (menuChoice) {
 
             case "M" :
+
+                getLogger().write(getLogger().convertDateTime() + " " + menuChoice);
+                getLogger().formatStartingBalance(readBalance().getBalance());
+
                 readBalance().feedMoney( getScan() );
+
+                getLogger().formatEndingBalance(readBalance().getBalance());
+//                try {
+////                    getLogger().formatEndingBalance(printBalance());
+//                } catch (NumberFormatException e) {
+//                    e.printStackTrace();
+//                }
                 showMenu();
                 break;
             case "S":

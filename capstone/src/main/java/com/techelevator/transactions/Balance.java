@@ -3,6 +3,7 @@ package com.techelevator.transactions;
 
 import com.techelevator.inventory.Item;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Balance {
@@ -107,7 +108,7 @@ public class Balance {
     }
 
     public BigDecimal getBalance() {
-        return balance;
+        return balance.setScale(2, RoundingMode.CEILING);
     }
     public static void setBalance (BigDecimal money) {
         balance = balance.add(money);

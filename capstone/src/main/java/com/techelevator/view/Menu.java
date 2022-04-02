@@ -8,10 +8,11 @@ import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 public class Menu {
-
+    private static Logger log = new Logger();
     private Scanner scan = new Scanner( System.in );
     private static Inventory inventory = new Inventory(); // changed to static made it work?
     private static Balance balance = new Balance();
@@ -46,9 +47,9 @@ public class Menu {
         return balance;
     }
 
-    public String printBalance() {
-        return new BigDecimal(String.valueOf(balance)).toString();
-    }
+//    public BigDecimal printBalance() {
+//        return balance.getBalance().setScale(2,RoundingMode.CEILING);
+//    }
 
     public DisplayMenu getDisplayMenu() {
         return displayMenu;
@@ -108,9 +109,9 @@ public class Menu {
         System.exit( 0 );
     }
 
-//    public Logger getLogger() {
-//        return log;
-//    }
+    public Logger getLogger() {
+        return log;
+    }
 
 }
 
