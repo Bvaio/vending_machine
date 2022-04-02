@@ -51,7 +51,7 @@ public class PurchaseMenu extends Menu {
                 final BigDecimal previousBalance = readBalance().getBalance();
 
                 getLogger().writeItemPurchase(scan,readBalance().getBalance());
-                readBalance().payForItem( getPulledInventory().get( scan ) );
+//                readBalance().payForItem( getPulledInventory().get( scan ) );
 
                 try {
                     readBalance().payForItem( getPulledInventory().get( scan ) );
