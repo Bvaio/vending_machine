@@ -26,8 +26,9 @@ public class Logger {
         }
     }
 
-    public void write(String logMessage) {
-        this.writer.printf(logMessage);
+    public void writeMoneyFed(BigDecimal balance) {
+        this.writer.printf(convertDateTime() + " MONEY FED:");
+        formatStartingBalance(balance);
         this.writer.flush();
     }
 

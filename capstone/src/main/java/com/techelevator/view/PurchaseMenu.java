@@ -28,17 +28,11 @@ public class PurchaseMenu extends Menu {
 
             case "M" :
 
-                getLogger().write(getLogger().convertDateTime() + " " + menuChoice);
-                getLogger().formatStartingBalance(readBalance().getBalance());
 
+                getLogger().writeMoneyFed(readBalance().getBalance());
                 readBalance().feedMoney( getScan() );
-
                 getLogger().formatEndingBalance(readBalance().getBalance());
-//                try {
-////                    getLogger().formatEndingBalance(printBalance());
-//                } catch (NumberFormatException e) {
-//                    e.printStackTrace();
-//                }
+//                getLogger().formatEndingBalance(readBalance().getBalance());
                 showMenu();
                 break;
             case "S":
