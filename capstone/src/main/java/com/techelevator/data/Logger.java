@@ -60,15 +60,11 @@ public class Logger {
         LocalDateTime dt = LocalDateTime.now();
         return formatter.format(dt);
     }
+
+
     public void close(){
         this.writer.close();
     }
-
-
-
-
-
-
 
 //    public void printFormat(){
 //
