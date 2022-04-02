@@ -6,8 +6,6 @@ import com.techelevator.inventory.Inventory;
 import com.techelevator.inventory.Item;
 import com.techelevator.transactions.Balance;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 
 public class Menu {
@@ -17,11 +15,9 @@ public class Menu {
     private static Balance balance = new Balance();
     private static Map< String, Item > pulledInventory = pullInventory();
 
-
     private static DisplayMenu displayMenu = new DisplayMenu();
     private static PurchaseMenu purchaseMenu = new PurchaseMenu();
-    private Sales sales;
-
+    private static Sales sales = new Sales();
 
     public void showMenu() {
 //        inventory.createItemMap( "catering.csv" );
@@ -50,10 +46,6 @@ public class Menu {
     public Balance readBalance() {
         return balance;
     }
-
-//    public BigDecimal printBalance() {
-//        return balance.getBalance().setScale(2,RoundingMode.CEILING);
-//    }
 
     public DisplayMenu getDisplayMenu() {
         return displayMenu;
@@ -85,7 +77,7 @@ public class Menu {
                 purchaseMenu.showMenu();
                 break;
             case "S" :
-                getLogger().salesReport();
+                sales.generateSalesLog();
                 System.out.println("Sales report generated at " + getLogger().convertDateTime());
                 break;
             case "E" :
@@ -106,16 +98,14 @@ public class Menu {
     }
 
     public static Map< String, Item> pullInventory() {
-//        inventory.createItemMap("catering.csv");
+        inventory.createItemMap("catering.csv");
 //        inventory.createItemMap("catering1.csv");
 //        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv" );
-        inventory.createItemMap( "Audit.txt" );
-
+//        inventory.createItemMap( "Audit.txt" );
 
         if ( inventory.invalidFilePathMapFailure() ) {
             exit();
         }
-
         return inventory.getItemMap();
     }
 
