@@ -36,7 +36,6 @@ public class Logger {
     public void moneyFed(Scanner scan) {
         String moneyFed = "MONEY FED: ";
         this.writer.format("%-23s %-22s %6s",convertDateTime(), moneyFed ,showCurrencyValue());
-//        this.writer.printf("%10s",menu.readBalance().getBalance().toString());
         menu.readBalance().feedMoney(scan);
         this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
@@ -45,7 +44,6 @@ public class Logger {
 
     public void itemPurchase(String scan, Item item) {
         this.writer.printf("%-23s %-19s %-2s %6s",convertDateTime(),  menu.getInventory().getItemMap().get(scan).getItemName(), menu.getInventory().getItemMap().get(scan).getSlotIdentifier(),showCurrencyValue());
-//        this.writer.printf("-2s",menu.readBalance().getBalance().toString());
         menu.readBalance().payForItem(item);
         this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
@@ -54,7 +52,6 @@ public class Logger {
     public void moneyDispensed(){
         String changeGiven = "CHANGE GIVEN: ";
         this.writer.printf("%-23s %-22s %6s",convertDateTime(),changeGiven,showCurrencyValue());
-//        this.writer.printf("%-2s",menu.readBalance().getBalance().toString());
         menu.readBalance().dispenseMoney();
         this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
