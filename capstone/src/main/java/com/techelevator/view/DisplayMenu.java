@@ -20,14 +20,14 @@ public class DisplayMenu extends Menu {
                 super.showMenu();
                 break;
             case "P":
-                getPurchaseMenu().showMenu();
+                getPurchaseMenu().purchaseMenu();
                 break;
             case "E":
                 exit();
                 break;
             default:
                 System.out.println("Invalid selection, please try again.");
-                showMenu();
+                displayMenu();
         }
     }
 }
