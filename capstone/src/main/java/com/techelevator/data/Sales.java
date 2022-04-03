@@ -21,14 +21,12 @@ public class Sales extends Logger{
                 int numberSold = 7 - menuInventoryMap.get(item).getInventoryCount();
                 if (menuInventoryMap.get(item).getInventoryCount() < 7) {
                     salesWriter.println(menuInventoryMap.get(item).getItemName() + "," + numberSold);
-//                    salesWriter.flush();
                     grossSalesFromItem = grossSalesFromItem.add(
                             BigDecimal.valueOf( 7 - menuInventoryMap.get(item).getInventoryCount() ).multiply( menuInventoryMap.get(item).getItemPrice() ));
                 }
                 counter++;
                 if (counter == menuInventoryMap.size()) {
                     salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
-//                    salesWriter.flush();
                 }
                 }
             } catch (IOException e) {
