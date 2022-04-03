@@ -12,18 +12,8 @@ public class Sales extends Logger{
     private PrintWriter salesWriter;
     private File salesFile;
 
-//    public Sales() {
-//        this.salesFile = new File(generateFileName());
-//            try {
-//                this.salesWriter = new PrintWriter(new FileOutputStream(this.salesFile, true));
-//            } catch (IOException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
-
 
     public void generateSalesLog() {
-//        String filePath = generateFileName();
         Map< String, Item> menuInventoryMap = menu.getInventory().getItemMap();
         this.salesFile = new File(generateFileName());
         try (PrintWriter salesWriter = new PrintWriter(salesFile)) {
@@ -47,7 +37,6 @@ public class Sales extends Logger{
             System.out.println(e.getMessage());
         }
     }
-
 
     public String generateFileName(){
         String pathToReport = "C:\\Users\\Student\\workspace\\module-1-capstone-team-1\\capstone\\receipts\\";
