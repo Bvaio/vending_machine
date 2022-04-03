@@ -61,13 +61,15 @@ public class Balance {
     }
 
     public void payForItem( Item item ) {
-        if (item.getItemPrice().compareTo(ZERO) == 0) {
-            System.out.println("Item out of stock");
-        } else if (balance.compareTo(item.getItemPrice()) >= 0) {
-            balance = balance.subtract(item.getItemPrice());
-            item.removeOneFromInventory();
+        if ( item.getInventoryCount() > 0 ) {
+            if ( balance.compareTo( item.getItemPrice() ) >= 0 ) {
+                balance = balance.subtract(item.getItemPrice());
+                item.removeOneFromInventory();
+            } else {
+                System.out.println( "Insufficient funds" );
+            }
         } else {
-            System.out.println( "Insufficient funds" );
+            System.out.println("Item out of stock");
         }
     }
 

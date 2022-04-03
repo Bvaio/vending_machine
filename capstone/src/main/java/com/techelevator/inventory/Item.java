@@ -18,9 +18,9 @@ public class Item {
 
     public int removeOneFromInventory(){
         this.inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
-        if ( inventoryCount == 0 ) {
-            itemName = itemName + " : OUT OF STOCK";
-        }
+//        if ( inventoryCount == 0 ) {
+//            itemName = itemName + " : OUT OF STOCK";
+//        }
         return this.inventoryCount;
     }
 
@@ -32,13 +32,13 @@ public class Item {
         return slotIdentifier;
     }
     public String getItemName() {
-        return inventoryCount > 0 ? itemName : itemName + " : OUT OF STOCK";
+        return itemName;
     }
     public String getItemType() {
         return itemType;
     }
     public BigDecimal getItemPrice() {
-        return inventoryCount > 0 ? itemPrice : BigDecimal.valueOf( 0 );
+        return itemPrice;
     }
     public int getInventoryCount() {
         return inventoryCount;
