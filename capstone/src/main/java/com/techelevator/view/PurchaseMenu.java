@@ -51,7 +51,7 @@ public class PurchaseMenu extends Menu {
                     purchaseMenu();
                 }
                 if ( !previousBalance.equals( readBalance().getBalance() ) ) {
-                    userEats(getPulledInventory().get( scan ) );
+                    System.out.println( userEats(getPulledInventory().get( scan ) ) );
                 }
                 purchaseMenu();
                 break;
@@ -67,26 +67,26 @@ public class PurchaseMenu extends Menu {
         }
     }
 
-    public void userEats( Item item ) {
+    public String userEats( Item item ) {
         final String MUNCHY = "munchy";
         final String SANDWICH = "sandwich";
         final String DRINK = "drink";
         final String DESSERT = "dessert";
 
         if ( item.getItemType().equalsIgnoreCase( MUNCHY ) ) {
-            System.out.println( "Munchy, Munchy, so Good!" );
+            return "Munchy, Munchy, so Good";
         }
         else if ( item.getItemType().equalsIgnoreCase( SANDWICH ) ) {
-            System.out.println( "Sandwich So Delicious, Yum!" );
+            return "Sandwich So Delicious, Yum!";
         }
         else if ( item.getItemType().equalsIgnoreCase( DRINK ) ) {
-            System.out.println( "Drinky, Drinky, Slurp Slurp!" );
+            return "Drinky, Drinky, Slurp Slurp!";
         }
         else if ( item.getItemType().equalsIgnoreCase( DESSERT ) ) {
-            System.out.println( "Sugar, Sugar, so Sweet!" );
+            return "Sugar, Sugar, so Sweet!";
         }
         else {
-            System.out.println( "That was a good " + item.getItemType() );
+            return "That was a good " + item.getItemType();
         }
     }
 }

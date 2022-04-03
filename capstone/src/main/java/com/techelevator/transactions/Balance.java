@@ -122,6 +122,15 @@ public class Balance {
         returnedChange.put( "Nickel", nickel );
     }
 
+    public void dispenseChange() {
+        dispenseMoney();
+        System.out.println(
+                "Dispensing " + returnedChange.get( "Dollar" ) + " dollar(s), " +
+                        returnedChange.get( "Quarter" ) + " quarter(s), " +
+                        returnedChange.get( "Dime" ) + " dime(s), " +
+                        returnedChange.get( "Nickel" ) + " nickel(s)" );
+    }
+
     public BigDecimal getBalance() {
         return balance.setScale(2, RoundingMode.CEILING);
     }
@@ -138,12 +147,4 @@ public class Balance {
         return returnedChange;
     }
 
-    public void dispenseChange() {
-        dispenseMoney();
-        System.out.println(
-                "Dispensing " + returnedChange.get( "Dollar" ) + " dollar(s), " +
-                        returnedChange.get( "Quarter" ) + " quarter(s), " +
-                        returnedChange.get( "Dime" ) + " dime(s), " +
-                        returnedChange.get( "Nickel" ) + " nickel(s)" );
-    }
 }
