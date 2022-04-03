@@ -19,28 +19,30 @@ public class Sales extends Logger{
 //        }
 
 
-    public void generateSalesLog(){
+    public void generateSalesLog() {
+//        String filePath = generateFileName();
         this.salesFile = new File(generateFileName());
-        try {
-            this.salesWriter = new PrintWriter(this.salesFile);
-        } catch (IOException e) {
+        try (PrintWriter salesWriter = new PrintWriter(salesFile)) {
+            BigDecimal grossSalesFromItem = BigDecimal.valueOf(0);
+            int counter = 0;
+            for (String item : menu.getInventory().getItemMap().keySet()) {
+                int numberSold = 7 - menu.getInventory().getItemMap().get(item).getInventoryCount();
+                if (menu.getInventory().getItemMap().get(item).getInventoryCount() < 7) {
+                    salesWriter.println(menu.getInventory().getItemMap().get(item).getItemName() + "," + numberSold);
+                    salesWriter.flush();
+                    grossSalesFromItem = grossSalesFromItem.add(BigDecimal.valueOf(7 - menu.getInventory().getItemMap().get(item).getInventoryCount()).multiply(menu.getInventory().getItemMap().get(item).getItemPrice()));
+                }
+                counter++;
+                if (counter == menu.getInventory().getItemMap().size()) {
+                    salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
+                    salesWriter.flush();
+                }
+                }
+            } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        BigDecimal grossSalesFromItem = BigDecimal.valueOf(0);
-        int counter = 0;
-        for (String item : menu.getInventory().getItemMap().keySet()) {
-            int numberSold = 7 - menu.getInventory().getItemMap().get(item).getInventoryCount();
-            if (menu.getInventory().getItemMap().get(item).getInventoryCount() < 7) {
-                this.salesWriter.println(menu.getInventory().getItemMap().get(item).getItemName() + "," + numberSold);
-                this.salesWriter.flush();
-                grossSalesFromItem = grossSalesFromItem.add(BigDecimal.valueOf(7 - menu.getInventory().getItemMap().get(item).getInventoryCount()).multiply(menu.getInventory().getItemMap().get(item).getItemPrice()));
-            } counter++;
-            if (counter == menu.getInventory().getItemMap().size()) {
-                this.salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
-                this.salesWriter.flush();
-            }
-        }
     }
+
 
     public String generateFileName(){
         String pathToReport = "C:\\Users\\Student\\workspace\\module-1-capstone-team-1\\capstone\\receipts\\";

@@ -50,8 +50,6 @@ public class Menu {
                 showMenu();
                 break;
             case "E" :
-                sales.closeSalesWriter();
-                log.close();
                 exit();
                 break;
             default:
@@ -73,7 +71,6 @@ public class Menu {
 //        inventory.createItemMap("catering.csv");
         inventory.createItemMap("catering1.csv");
 //        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv" );
-
         if ( inventory.invalidFilePathMapFailure() ) {
             exit();
         }
@@ -84,7 +81,6 @@ public class Menu {
         System.exit( 0 );
 //        caTEringCapstoneCLI.setIsRunning( false );
     }
-
     public Scanner getScan() {
         return scan;
     }
