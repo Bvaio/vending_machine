@@ -40,7 +40,7 @@ public class Sales extends Logger{
                 this.salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
                 this.salesWriter.flush();
             }
-        } closeSalesWriter();
+        }
     }
 
     public String generateFileName(){
