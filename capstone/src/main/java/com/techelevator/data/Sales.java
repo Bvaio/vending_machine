@@ -12,7 +12,7 @@ public class Sales extends Logger{
     private File salesFile;
 
     public void generateSalesLog() {
-        Map< String, Item> menuInventoryMap = menu.getInventory().getItemMap();
+        Map< String, Item> menuInventoryMap = getMenu().getInventory().getItemMap();
         this.salesFile = new File(generateFileName());
         try (PrintWriter salesWriter = new PrintWriter(salesFile)) {
             BigDecimal grossSalesFromItem = BigDecimal.valueOf(0);
@@ -21,14 +21,14 @@ public class Sales extends Logger{
                 int numberSold = 7 - menuInventoryMap.get(item).getInventoryCount();
                 if (menuInventoryMap.get(item).getInventoryCount() < 7) {
                     salesWriter.println(menuInventoryMap.get(item).getItemName() + "," + numberSold);
-                    salesWriter.flush();
+//                    salesWriter.flush();
                     grossSalesFromItem = grossSalesFromItem.add(
                             BigDecimal.valueOf( 7 - menuInventoryMap.get(item).getInventoryCount() ).multiply( menuInventoryMap.get(item).getItemPrice() ));
                 }
                 counter++;
                 if (counter == menuInventoryMap.size()) {
                     salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
-                    salesWriter.flush();
+//                    salesWriter.flush();
                 }
                 }
             } catch (IOException e) {

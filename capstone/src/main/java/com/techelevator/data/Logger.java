@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Logger {
     private File logFile;
     private PrintWriter writer;
-    Menu menu = new Menu();
+    private Menu menu = new Menu();
 
     public Logger() {
         this.logFile = new File("Audit.txt");
@@ -34,7 +34,7 @@ public class Logger {
 
     public void moneyFed(Scanner scan) {
         String moneyFed = "MONEY FED: ";
-        this.writer.format("%-23s %-22s %6s",convertDateTime(), moneyFed ,showCurrencyValue());
+        this.writer.printf("%-23s %-22s %6s",convertDateTime(), moneyFed ,showCurrencyValue());
         menu.readBalance().feedMoney(scan);
         this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
