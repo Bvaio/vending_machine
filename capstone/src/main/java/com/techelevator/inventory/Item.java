@@ -18,9 +18,6 @@ public class Item {
 
     public int removeOneFromInventory(){
         this.inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
-//        if ( inventoryCount == 0 ) {
-//            itemName = itemName + " : OUT OF STOCK";
-//        }
         return this.inventoryCount;
     }
 

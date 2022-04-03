@@ -42,7 +42,12 @@ public class Logger {
     }
 
     public void itemPurchase(String scan, Item item) {
-        this.writer.printf("%-23s %-19s %-2s %6s",convertDateTime(),  menu.getInventory().getItemMap().get(scan).getItemName(), menu.getInventory().getItemMap().get(scan).getSlotIdentifier(),showCurrencyValue());
+        this.writer.printf( "%-23s %-19s %-2s %6s",
+                convertDateTime(),
+                menu.getInventory().getItemMap().get(scan).getItemName(),
+                menu.getInventory().getItemMap().get(scan).getSlotIdentifier(),
+                showCurrencyValue() );
+
         menu.readBalance().payForItem(item);
         this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");

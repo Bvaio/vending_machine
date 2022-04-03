@@ -11,8 +11,8 @@ import java.math.RoundingMode;
 import static org.junit.Assert.*;
 
 public class BalanceTest {
-    Balance balance;
-    Item item;
+    private Balance balance;
+    private Item item;
 
     @Before
     public void test (){

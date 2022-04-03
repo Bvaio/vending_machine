@@ -23,7 +23,7 @@ public class Sales extends Logger{
                     salesWriter.println(menuInventoryMap.get(item).getItemName() + "," + numberSold);
                     salesWriter.flush();
                     grossSalesFromItem = grossSalesFromItem.add(
-                            BigDecimal.valueOf(7 - menuInventoryMap.get(item).getInventoryCount()).multiply(menuInventoryMap.get(item).getItemPrice()));
+                            BigDecimal.valueOf( 7 - menuInventoryMap.get(item).getInventoryCount() ).multiply( menuInventoryMap.get(item).getItemPrice() ));
                 }
                 counter++;
                 if (counter == menuInventoryMap.size()) {

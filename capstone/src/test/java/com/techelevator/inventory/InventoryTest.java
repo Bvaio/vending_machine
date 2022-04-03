@@ -8,11 +8,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class InventoryTest {
-    Inventory inventory = new Inventory();
-    String filePath = null;
-    Item item = null;
-    String testDirectory = "src/test/java/com/techelevator/testFiles/";
-    String testPath = null;
+    private Inventory inventory = new Inventory();
+    private String filePath = null;
+    private Item item = null;
+    private String testDirectory = "src/test/java/com/techelevator/testFiles/";
+    private String testPath = null;
 
     @Before
     public void setUp() throws Exception {

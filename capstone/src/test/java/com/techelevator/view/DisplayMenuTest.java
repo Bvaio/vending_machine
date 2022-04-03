@@ -11,11 +11,11 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class DisplayMenuTest {
-    Menu menu;
-    DisplayMenu displayMenu;
-    String filePath = "src/test/java/com/techelevator/testFiles/validTestFile.csv";
-    Map< String, Item > displayItemMap;
-    String[] expectedKeys;
+    private Menu menu;
+    private DisplayMenu displayMenu;
+    private String filePath = "src/test/java/com/techelevator/testFiles/validTestFile.csv";
+    private Map< String, Item > displayItemMap;
+    private String[] expectedKeys;
 
     @Before
     public void setUp() throws Exception {

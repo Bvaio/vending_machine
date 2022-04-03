@@ -9,10 +9,10 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class ItemTest {
-    Inventory inventory;
-    Item item;
-    String testFilePath = "src/test/java/com/techelevator/testFiles/validTestFile.csv";
-    Map< String, Item > referenceMap;
+    private Inventory inventory;
+    private Item item;
+    private String testFilePath = "src/test/java/com/techelevator/testFiles/validTestFile.csv";
+    private Map< String, Item > referenceMap;
 
     @Before
     public void setUp() throws Exception {

@@ -1,6 +1,5 @@
 package com.techelevator.view;
 
-import com.techelevator.CaTEringCapstoneCLI;
 import com.techelevator.data.Logger;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
@@ -10,18 +9,18 @@ import com.techelevator.transactions.Balance;
 import java.util.*;
 
 public class Menu {
-    private static Logger log = new Logger();
     private Scanner scan = new Scanner( System.in );
-    private static Inventory inventory = new Inventory();
-    private static Balance balance = new Balance();
-    private static Map< String, Item > pulledInventory = pullInventory();
     private static DisplayMenu displayMenu = new DisplayMenu();
     private static PurchaseMenu purchaseMenu = new PurchaseMenu();
+    private static Inventory inventory = new Inventory();
+    private static Balance balance = new Balance();
+    private static Logger log = new Logger();
     private static Sales sales = new Sales();
+    private static Map< String, Item > pulledInventory = pullInventory();
 
     public void showMenu() {
 
-        if ( inventory.invalidFilePathMapFailure() ) {
+        if ( inventory.isInvalidFile() ) {
             exit();
         }
 
@@ -69,7 +68,7 @@ public class Menu {
 //        inventory.createItemMap("catering.csv");
         inventory.createItemMap("catering1.csv");
 //        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv" );
-        if ( inventory.invalidFilePathMapFailure() ) {
+        if ( inventory.isInvalidFile() ) {
             exit();
         }
         return inventory.getItemMap();

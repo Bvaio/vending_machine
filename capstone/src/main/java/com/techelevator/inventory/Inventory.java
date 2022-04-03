@@ -9,10 +9,12 @@ import java.util.Scanner;
 
 public class Inventory {
     private Map<String, Item> itemMap = new HashMap<>();
-    private boolean invalidFile = false;
+    private boolean invalidFile;
 
     public void createItemMap(String filePath) {
         boolean isValidFileType = filePath.substring( filePath.length() - 4 ).equals( ".csv" );
+
+        invalidFile = false;
 
         if ( isValidFileType ) {
             File readFile = new File(filePath);
@@ -49,7 +51,6 @@ public class Inventory {
         } else {
             invalidFileError();
         }
-
     }
 
     private void invalidFileError() {
@@ -66,9 +67,4 @@ public class Inventory {
     public Map<String, Item> getItemMap() {
         return itemMap;
     }
-
-    public boolean invalidFilePathMapFailure() {
-        return invalidFile;
-    }
-
 }
