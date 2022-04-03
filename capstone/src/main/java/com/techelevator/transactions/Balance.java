@@ -1,6 +1,5 @@
 package com.techelevator.transactions;
 
-
 import com.techelevator.inventory.Item;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,21 +15,16 @@ public class Balance {
     private final BigDecimal TEN = BigDecimal.valueOf(10);
     private final BigDecimal TWENTY = BigDecimal.valueOf(20);
     private Map< String, Integer > returnedChange = new HashMap<>();
-//    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
-
 
     public void feedMoney( Scanner scan ) {
         System.out.println("Please enter one of the denominations below: ");
         System.out.println("$0\n$1\n$5\n$10\n$20");
-//        System.out.println("( P ) to quit and return to Purchase Menu");
+
         System.out.println("Current balance: $" + getBalance());
         System.out.print("- - >  ");
 
         String selection = scan.nextLine();
 
-//        if (selection.equalsIgnoreCase("P")) { // balance shouldn't do this menu should
-//            purchaseMenu.showMenu();
-//        }
         BigDecimal money = null;
         try {
             money = BigDecimal.valueOf(Integer.parseInt(selection));
@@ -47,8 +41,6 @@ public class Balance {
             System.out.println("Invalid denomination selected. Please try again.");
             feedMoney(scan);
         }
-//        Scanner scan = new Scanner( System.in );
-//        raiseBalance( money );
 
         System.out.println( "\nNew Balance: $" + balance );
         System.out.println("Continue adding funds?\nYes ( Y )\nNo ( N )");
@@ -62,24 +54,11 @@ public class Balance {
 
         if (choice.equalsIgnoreCase("Y")) {
             feedMoney( scan );
-        } else if (choice.equalsIgnoreCase("N")) {
-//            purchaseMenu.showMenu();
+        }
+        else if (choice.equalsIgnoreCase("N")) {
             System.out.println("Returning to Purchase Menu");
         }
     }
-
-//    public void payForItem(Scanner scan, Inventory inventory) {
-//        System.out.println("Please select from the list below: ");
-//        String selection = scan.nextLine().toUpperCase(); // added to uppercase
-//        if (inventory.getItemMap().containsKey(selection) && inventory.getItemMap().get(selection).getItemPrice().compareTo(ZERO) == 0) {
-//            System.out.println("Item cannot be purchased at this time");
-//        } else if (balance.compareTo(inventory.getItemMap().get(selection).getItemPrice()) >= 0) {
-//            balance = balance.subtract(inventory.getItemMap().get(selection).getItemPrice());
-//            inventory.getItemMap().get(selection).removeOneFromInventory();
-//        } else {
-//            System.out.println("Insufficient Funds"); //modify for validation and looping back to menu
-//        } purchaseMenu.showMenu();
-//    }
 
     public void payForItem( Item item ) {
         if (item.getItemPrice().compareTo(ZERO) == 0) {
@@ -131,12 +110,12 @@ public class Balance {
                         returnedChange.get( "Nickel" ) + " nickel(s)" );
     }
 
-    public BigDecimal getBalance() {
-        return balance.setScale(2, RoundingMode.CEILING);
-    }
-
     public void raiseBalance(BigDecimal money) {
         balance = balance.add(money);
+    }
+
+    public BigDecimal getBalance() {
+        return balance.setScale(2, RoundingMode.CEILING);
     }
 
     public void setBalance( BigDecimal money ) {

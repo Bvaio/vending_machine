@@ -1,6 +1,5 @@
 package com.techelevator.view;
 
-import com.techelevator.CaTEringCapstoneCLI;
 import com.techelevator.data.Logger;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
@@ -12,16 +11,14 @@ import java.util.*;
 public class Menu {
     private static Logger log = new Logger();
     private Scanner scan = new Scanner( System.in );
-    private static Inventory inventory = new Inventory(); // changed to static made it work?
+    private static Inventory inventory = new Inventory();
     private static Balance balance = new Balance();
     private static Map< String, Item > pulledInventory = pullInventory();
     private static DisplayMenu displayMenu = new DisplayMenu();
     private static PurchaseMenu purchaseMenu = new PurchaseMenu();
     private static Sales sales = new Sales();
-//    private static CaTEringCapstoneCLI caTEringCapstoneCLI;
 
     public void showMenu() {
-//        inventory.createItemMap( "catering.csv" );
 
         if ( inventory.invalidFilePathMapFailure() ) {
             exit();
@@ -77,20 +74,25 @@ public class Menu {
         return inventory.getItemMap();
     }
 
-    public static void exit() {// exits program
-        System.exit( 0 );
-//        caTEringCapstoneCLI.setIsRunning( false );
+    public void showInventory() {
+        System.out.println("\nOur current inventory");
+        sortedInventoryDisplay();
     }
+
+    public static void exit() { // exits program
+        System.exit( 0 );
+    }
+
+    public Balance readBalance() {
+        return balance;
+    }
+
     public Scanner getScan() {
         return scan;
     }
 
     public Inventory getInventory() {
         return inventory;
-    }
-
-    public Balance readBalance() {
-        return balance;
     }
 
     public DisplayMenu getDisplayMenu() {
@@ -107,11 +109,6 @@ public class Menu {
 
     public static Map<String, Item> getPulledInventory() {
         return pulledInventory;
-    }
-
-    public void showInventory() {
-        System.out.println("\nOur current inventory");
-        sortedInventoryDisplay();
     }
 
     public Logger getLogger() {

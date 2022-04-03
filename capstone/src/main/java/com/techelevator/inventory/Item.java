@@ -16,10 +16,22 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
+    public int removeOneFromInventory(){
+        this.inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
+        if ( inventoryCount == 0 ) {
+            itemName = itemName + " : OUT OF STOCK";
+        }
+        return this.inventoryCount;
+    }
+
+    public String displayItem() {
+        return itemName + " | " + itemPrice + " | Current Stock: " + getInventoryCount();
+    }
+
     public String getSlotIdentifier() {
         return slotIdentifier;
     }
-    public String getItemName() { // make logger to report item is out of stock
+    public String getItemName() {
         return inventoryCount > 0 ? itemName : itemName + " : OUT OF STOCK";
     }
     public String getItemType() {
@@ -31,14 +43,5 @@ public class Item {
     public int getInventoryCount() {
         return inventoryCount;
     }
-    public String displayItem() {
-        return itemName + " | " + itemPrice + " | Current Stock: " + getInventoryCount();
-    }
-    public int removeOneFromInventory(){
-        this.inventoryCount = inventoryCount > 0 ? inventoryCount - 1 : 0;
-        if ( inventoryCount == 0 ) {
-            itemName = itemName + " : OUT OF STOCK";
-        }
-        return this.inventoryCount;
-    }
+
 }

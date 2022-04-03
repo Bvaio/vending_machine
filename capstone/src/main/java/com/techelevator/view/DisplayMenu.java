@@ -2,7 +2,6 @@ package com.techelevator.view;
 
 public class DisplayMenu extends Menu {
 
-
     public void displayMenu() {
 
         showInventory();

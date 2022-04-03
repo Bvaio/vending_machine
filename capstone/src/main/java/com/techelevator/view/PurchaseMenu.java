@@ -8,8 +8,6 @@ import java.util.*;
 public class PurchaseMenu extends Menu {
     private Map< String , Item > pulledInventory = pullInventory();
 
-
-
     public void purchaseMenu() {
 
         System.out.println("\nPlease select from the following options:");
@@ -24,18 +22,11 @@ public class PurchaseMenu extends Menu {
         switch (menuChoice) {
 
             case "M" :
-//                readBalance().feedMoney( getScan() );
                 getLogger().moneyFed(getScan());
                 purchaseMenu();
                 break;
             case "S":
-//                System.out.println("Our current inventory");
-//                sortedInventoryDisplay();
-//                readBalance().payForItem( getScan(), getInventory() );
-//                showMenu();
 
-//                System.out.println("\nOur current inventory");
-//                sortedInventoryDisplay();
                 showInventory();
 
                 System.out.println("\nWhat would you like to purchase");
@@ -45,14 +36,16 @@ public class PurchaseMenu extends Menu {
 
                 try {
                     getLogger().itemPurchase(scan, getPulledInventory().get(scan));
-//                    readBalance().payForItem( getPulledInventory().get( scan ) );
-                } catch ( NullPointerException notInListItem ) {
+                }
+                catch ( NullPointerException notInListItem ) {
                     System.out.println( "Item not in list");
                     purchaseMenu();
                 }
+
                 if ( !previousBalance.equals( readBalance().getBalance() ) ) {
                     System.out.println( userEats(getPulledInventory().get( scan ) ) );
                 }
+
                 purchaseMenu();
                 break;
             case "F":

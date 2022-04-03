@@ -27,12 +27,17 @@ public class Inventory {
                     }
 
                     try {
-                        Item makeItem = new Item(readLineToArray[0], readLineToArray[1], BigDecimal.valueOf(Double.parseDouble(readLineToArray[3])), readLineToArray[2]);
-                        itemMap.put(makeItem.getSlotIdentifier(), makeItem);
-                    } catch (ArrayIndexOutOfBoundsException outOfBoundsException) {
+                        Item makeItem = new Item(
+                                readLineToArray[0],
+                                readLineToArray[1],
+                                BigDecimal.valueOf(Double.parseDouble(readLineToArray[3])),
+                                readLineToArray[2]
+                        );
+                        itemMap.put( makeItem.getSlotIdentifier(), makeItem );
+                    } catch ( ArrayIndexOutOfBoundsException outOfBoundsException ) {
                         invalidFileError();
                         break;
-                    } catch (NumberFormatException numberFormatException) {
+                    } catch ( NumberFormatException numberFormatException ) {
                         invalidFileError();
                         break;
                     }
@@ -47,14 +52,6 @@ public class Inventory {
 
     }
 
-    public Map<String, Item> getItemMap() {
-        return itemMap;
-    }
-
-    public boolean invalidFilePathMapFailure() {
-        return invalidFile;
-    }
-
     private void invalidFileError() {
         String invalidFileError = "System cannot collect items at this time";
 
@@ -65,4 +62,13 @@ public class Inventory {
     public boolean isInvalidFile() {
         return invalidFile;
     }
+
+    public Map<String, Item> getItemMap() {
+        return itemMap;
+    }
+
+    public boolean invalidFilePathMapFailure() {
+        return invalidFile;
+    }
+
 }
