@@ -24,7 +24,7 @@ public class InventoryTest {
 
     @Test
     public void inventory_check_slot_number_exists() {
-        filePath = "test.csv";
+        filePath = "catering.csv";
         String[] expectedKeys = new String[] {
                 "A1", "A2", "A3", "A4",
                 "B1", "B2", "B3", "B4",

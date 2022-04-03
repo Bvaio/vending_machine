@@ -65,21 +65,6 @@ public class ItemTest {
     }
 
     @Test
-    public void item_contains_out_of_stock_in_name_if_inventory_zero() {
-        String validFileSlotToTest = "A1";
-        String outOfStockReference = " : OUT OF STOCK";
-
-        while ( referenceMap.get( validFileSlotToTest ).getInventoryCount() > 0 ) {
-            referenceMap.get( validFileSlotToTest ).removeOneFromInventory();
-        }
-
-        int currentInventoryCount =  referenceMap.get( validFileSlotToTest ).getInventoryCount();
-
-        assertTrue( "Item contains " + currentInventoryCount + " should have \"OUT OF STOCK\" in name",
-                referenceMap.get( validFileSlotToTest ).getItemName().contains( outOfStockReference ) );
-    }
-
-    @Test
     public void item_should_not_contain_out_of_stock_in_name_if_inventory_not_zero() {
         String validFileSlotToTest = "A1";
         String outOfStockReference = " : OUT OF STOCK";
