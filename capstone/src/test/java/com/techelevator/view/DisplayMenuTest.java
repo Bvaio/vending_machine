@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 public class DisplayMenuTest {
     Menu menu;
     DisplayMenu displayMenu;
-    PurchaseMenu purchaseMenu;
 
     @Before
     public void setUp() throws Exception {
