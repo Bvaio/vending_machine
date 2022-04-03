@@ -9,24 +9,23 @@ public class Sales extends Logger{
     private PrintWriter salesWriter;
     private File salesFile;
 
-    public Sales() {
-        this.salesFile = new File(generateFileName());
-        if (!salesFile.exists() && !salesFile.isFile()) {
-            try {
-                this.salesWriter= new PrintWriter(this.salesFile);
-            } catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
-        } else {
-            try {
-                this.salesWriter = new PrintWriter(new FileOutputStream(this.salesFile, true));
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
+//    public Sales() {
+//        this.salesFile = new File(generateFileName());
+//            try {
+//                this.salesWriter = new PrintWriter(new FileOutputStream(this.salesFile, true));
+//            } catch (IOException e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
+
 
     public void generateSalesLog(){
+        this.salesFile = new File(generateFileName());
+        try {
+            this.salesWriter = new PrintWriter(this.salesFile);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         BigDecimal grossSalesFromItem = BigDecimal.valueOf(0);
         int counter = 0;
         for (String item : menu.getInventory().getItemMap().keySet()) {
