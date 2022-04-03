@@ -11,9 +11,9 @@ import java.util.*;
 
 public class Menu {
     private Scanner scan = new Scanner( System.in );
+    private static Inventory inventory = new Inventory();
     private static DisplayMenu displayMenu = new DisplayMenu();
     private static PurchaseMenu purchaseMenu = new PurchaseMenu();
-    private static Inventory inventory = new Inventory();
     private static Balance balance = new Balance();
     private static Logger log = new Logger();
     private static Sales sales = new Sales();
@@ -66,8 +66,8 @@ public class Menu {
     }
 
     public static Map< String, Item> pullInventory() {
-//        inventory.createItemMap("catering.csv");
-        inventory.createItemMap("catering1.csv");
+        inventory.createItemMap("catering.csv");
+//        inventory.createItemMap("catering1.csv");
 //        inventory.createItemMap( "src/test/java/com/techelevator/testFiles/validTestFile.csv" );
         if ( inventory.isInvalidFile() ) {
             exit();
