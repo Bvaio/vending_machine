@@ -52,7 +52,8 @@ public class Logger {
     public void moneyDispensed(){
         String changeGiven = "CHANGE GIVEN: ";
         this.writer.printf("%-23s %-22s %6s",convertDateTime(),changeGiven,showCurrencyValue());
-        menu.readBalance().dispenseMoney();
+        menu.readBalance().dispenseChange();
+//        menu.readBalance().dispenseChange();
         this.writer.printf("%8s",showCurrencyValue());
         this.writer.print("\n");
         this.writer.flush();
