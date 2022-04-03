@@ -1,7 +1,6 @@
 package com.techelevator.data;
 
 import com.techelevator.inventory.Item;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -11,7 +10,6 @@ import java.util.Map;
 public class Sales extends Logger{
     private PrintWriter salesWriter;
     private File salesFile;
-
 
     public void generateSalesLog() {
         Map< String, Item> menuInventoryMap = menu.getInventory().getItemMap();
