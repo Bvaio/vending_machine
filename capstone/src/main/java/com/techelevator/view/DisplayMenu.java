@@ -8,8 +8,8 @@ public class DisplayMenu extends Menu {
 
         System.out.println( "\nWhat would you like to do?" );
         System.out.println( "Return to Main Menu ( " + getFormatter().getBlueString("D") + " )" );
-        System.out.println( "Purchase Menu ( " + getFormatter().getBlueString("D") + " )" );
-        System.out.println( "Exit ( " + getFormatter().getBlueString("D") + " )" );
+        System.out.println( "Purchase Menu ( " + getFormatter().getBlueString("P") + " )" );
+        System.out.println( "Exit ( " + getFormatter().getBlueString("E") + " )" );
         System.out.print( "- - >  " );
 
         String menuChoice = getScan().nextLine().toUpperCase();
