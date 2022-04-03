@@ -45,16 +45,15 @@ public class Menu {
             case "S" :
                 sales.generateSalesLog();
                 System.out.println("Sales report generated at " + getLogger().convertDateTime());
-                showMenu();
+                sales.closeSalesWriter();
                 break;
             case "E" :
                 exit();
                 break;
             default:
                 System.out.println( "None selected try again" );
-                showMenu();
                 break;
-        }
+        } showMenu();
     }
 
     public void sortedInventoryDisplay() {
