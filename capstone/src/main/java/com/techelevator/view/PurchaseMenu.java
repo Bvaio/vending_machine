@@ -2,18 +2,15 @@ package com.techelevator.view;
 
 
 import com.techelevator.inventory.Item;
-import com.techelevator.view.Menu;
-
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 
 public class PurchaseMenu extends Menu {
     private Map< String , Item > pulledInventory = pullInventory();
 
 
-    @Override
-    public void showMenu() {
+
+    public void purchaseMenu() {
 
         System.out.println("\nPlease select from the following options:");
         System.out.println("Feed Money ( M )");
@@ -29,7 +26,7 @@ public class PurchaseMenu extends Menu {
             case "M" :
 //                readBalance().feedMoney( getScan() );
                 getLogger().moneyFed(getScan());
-                showMenu();
+                purchaseMenu();
                 break;
             case "S":
 //                System.out.println("Our current inventory");
@@ -51,12 +48,12 @@ public class PurchaseMenu extends Menu {
 //                    readBalance().payForItem( getPulledInventory().get( scan ) );
                 } catch ( NullPointerException notInListItem ) {
                     System.out.println( "Item not in list");
-                    showMenu();
+                    purchaseMenu();
                 }
                 if ( !previousBalance.equals( readBalance().getBalance() ) ) {
                     userEats(getPulledInventory().get( scan ) );
                 }
-                showMenu();
+                purchaseMenu();
                 break;
             case "F":
                 getLogger().moneyDispensed();
@@ -66,7 +63,7 @@ public class PurchaseMenu extends Menu {
                 break;
             default:
                 System.out.println("Invalid selection, please try again.");
-                showMenu();
+                purchaseMenu();
         }
     }
 

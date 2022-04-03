@@ -40,7 +40,7 @@ public class Sales extends Logger{
                 this.salesWriter.println("TOTAL SALES: $" + grossSalesFromItem);
                 this.salesWriter.flush();
             }
-        }
+        } closeSalesWriter();
     }
 
     public String generateFileName(){
@@ -51,5 +51,9 @@ public class Sales extends Logger{
         String date = dateAndTime.toString().replaceAll(":","-");
         date = date.replaceAll("T","_");
         return pathToReport + date + "_sales-report.txt";
+    }
+
+    public void closeSalesWriter(){
+        this.salesWriter.close();
     }
 }
