@@ -11,10 +11,10 @@ public class PurchaseMenu extends Menu {
     public void purchaseMenu() {
 
         System.out.println("\nPlease select from the following options:");
-        System.out.println("Feed Money ( M )");
-        System.out.println("Select Item ( S )");
-        System.out.println("Finish Transaction & Return to Main Menu ( F )");
-        System.out.println("Current balance: $" + readBalance().getBalance());
+        System.out.println("Feed Money ( " + getFormatter().getBlueString("M") + " )");
+        System.out.println("Select Item ( " + getFormatter().getBlueString("S") +  " )");
+        System.out.println("Finish Transaction & Return to Main Menu ( "+ getFormatter().getBlueString("F")+ " )");
+        System.out.println("Current balance: " + getFormatter().getGreenString("$" + readBalance().getBalance().toString()));
         System.out.print( "- - >  " );
 
         String menuChoice = getScan().nextLine().toUpperCase();

@@ -4,3 +4,40 @@
 04/03/2022 01:01:03 PM  MONEY FED:              $0.00  $10.00
 04/03/2022 01:01:08 PM  After Lunch Mints   D4 $10.00   $8.65
 04/03/2022 01:01:09 PM  CHANGE GIVEN:           $8.65   $0.00
+04/03/2022 03:56:44 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:01:12 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:01:45 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:01:51 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 04:04:43 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:04:48 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 04:04:53 PM  CHANGE GIVEN:           $8.65   $0.00
+04/03/2022 04:13:01 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:13:28 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:14:31 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:16:54 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:18:33 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:18:50 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:19:14 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:19:36 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:20:06 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:20:32 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:21:24 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:22:46 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:22:52 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 04:23:30 PM  After Lunch Mints   D4  $0.00   $0.00
+04/03/2022 04:23:31 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:23:41 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 04:24:13 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:24:20 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 04:25:45 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 04:25:51 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 04:28:07 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:41:10 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:49:04 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:50:10 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:50:42 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 04:51:44 PM  CHANGE GIVEN:           $0.00   $0.00
+04/03/2022 05:03:25 PM  MONEY FED:              $0.00  $10.00
+04/03/2022 05:03:42 PM  After Lunch Mints   D4 $10.00   $8.65
+04/03/2022 05:03:56 PM  CHANGE GIVEN:           $8.65   $0.00
+04/03/2022 05:07:05 PM  CHANGE GIVEN:           $0.00   $0.00

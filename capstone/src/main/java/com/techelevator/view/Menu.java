@@ -1,6 +1,7 @@
 package com.techelevator.view;
 
 
+import com.techelevator.TextFormatter;
 import com.techelevator.data.Logger;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
@@ -10,6 +11,7 @@ import com.techelevator.transactions.Balance;
 import java.util.*;
 
 public class Menu {
+    private TextFormatter formatter = new TextFormatter();
     private Scanner scan = new Scanner( System.in );
     private static Inventory inventory = new Inventory();
     private static DisplayMenu displayMenu = new DisplayMenu();
@@ -26,9 +28,9 @@ public class Menu {
         }
 
         System.out.println( "Welcome to the Terminal" );
-        System.out.println( "Display Menu ( D )" );
-        System.out.println( "Purchase Menu ( P )" );
-        System.out.println( "Exit ( E )" );
+        System.out.println( "Display Menu ( " + formatter.getBlueString("D") +" )" );
+        System.out.println( "Purchase Menu ( " + formatter.getBlueString("P") + " )" );
+        System.out.println( "Exit ( " + formatter.getBlueString("E") + " )" );
         System.out.print( "- - >  " );
         String menuChoice = scan.nextLine().toUpperCase();
         selectMenu( menuChoice );
@@ -44,7 +46,7 @@ public class Menu {
                 break;
             case "S" :
                 sales.generateSalesLog();
-                System.out.println("Sales report generated at " + getLogger().convertDateTime());
+                System.out.println("Sales report generated at " + formatter.getBlueString(getLogger().convertDateTime()));
                 showMenu();
                 break;
             case "E" :
@@ -114,6 +116,10 @@ public class Menu {
 
     public Logger getLogger() {
         return log;
+    }
+
+    public TextFormatter getFormatter(){
+        return formatter;
     }
 
 }
