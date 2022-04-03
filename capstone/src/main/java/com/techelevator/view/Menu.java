@@ -1,5 +1,6 @@
 package com.techelevator.view;
 
+import com.techelevator.CaTEringCapstoneCLI;
 import com.techelevator.data.Logger;
 import com.techelevator.data.Sales;
 import com.techelevator.inventory.Inventory;
@@ -17,6 +18,7 @@ public class Menu {
     private static DisplayMenu displayMenu = new DisplayMenu();
     private static PurchaseMenu purchaseMenu = new PurchaseMenu();
     private static Sales sales = new Sales();
+//    private static CaTEringCapstoneCLI caTEringCapstoneCLI;
 
     public void showMenu() {
 //        inventory.createItemMap( "catering.csv" );
@@ -79,6 +81,7 @@ public class Menu {
 
     public static void exit() {// exits program
         System.exit( 0 );
+//        caTEringCapstoneCLI.setIsRunning( false );
     }
 
     public Scanner getScan() {
