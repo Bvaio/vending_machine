@@ -4,6 +4,7 @@ import com.techelevator.inventory.Item;
 import com.techelevator.view.Menu;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,6 +35,7 @@ public class Logger {
 
     public void moneyFed(Scanner scan) {
         String moneyFed = "MONEY FED: ";
+        BigDecimal startingBalance = menu.readBalance().getBalance();
         this.writer.printf("%-23s %-22s %6s",convertDateTime(), moneyFed ,showCurrencyValue());
         menu.readBalance().feedMoney(scan);
         this.writer.printf("%8s",showCurrencyValue());

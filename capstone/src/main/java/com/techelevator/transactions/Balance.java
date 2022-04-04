@@ -38,14 +38,18 @@ public class Balance {
         } catch (NumberFormatException cannotParseIntoBigDecimal) {
             money = ZERO;
         }
-
+        while (!(money.compareTo(TWENTY) == 0) && !(money.compareTo(TEN) == 0) && !(money.compareTo(FIVE) == 0) && !(money.compareTo(ONE) == 0) && !(money.compareTo(ZERO) == 0)){
+            System.out.println(formatter.getRedString("Invalid denomination selected. Please try again."));
+            System.out.println(formatter.getGreenString( "$0\n$1\n$5\n$10\n$20"));
+            money = BigDecimal.valueOf(Integer.parseInt(scan.nextLine()));
+        }
         if (money.compareTo(ZERO) == 0) {
             System.out.println("No money added");
             raiseBalance(money);
         } else if ((money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
             raiseBalance(money);
         } else {
-            System.out.println(formatter.getRedString("Invalid denomination selected. Please try again."));
+
             feedMoney(scan);
         }
 
@@ -62,7 +66,6 @@ public class Balance {
             feedMoney(scan);
         } else if (choice.equalsIgnoreCase("N")) {
             System.out.println("\n"+formatter.getBlueString("Returning to Purchase Menu"));
-            purchaseMenu.purchaseMenu();
         }
     }
 
@@ -71,7 +74,7 @@ public class Balance {
             if (balance.compareTo(item.getItemPrice()) >= 0) {
                 balance = balance.subtract(item.getItemPrice());
                 item.removeOneFromInventory();
-                System.out.print(formatter.getTEXT_BLUE_AND_BOLD() + "Dispensing item");
+                System.out.print(formatter.getTEXT_GREEN_AND_BOLD() + "Dispensing item");
                 bufferingTransaction();
             } else {
                 System.out.println("Insufficient funds");
@@ -113,14 +116,14 @@ public class Balance {
 
     public void dispenseChange() {
         dispenseMoney();
-        System.out.print(formatter.getTEXT_GREEN() + "Dispensing");
+        System.out.print(formatter.getTEXT_GREEN() + formatter.getBOLD_FONT() + "Dispensing");
         bufferingTransaction();
         System.out.println(
                         formatter.getGreenString("Change given: ") +
                         formatter.getGreenString(returnedChange.get("Dollar").toString()) +  " dollar(s), " +
                         formatter.getGreenString(returnedChange.get("Quarter").toString()) + " quarter(s), " +
                         formatter.getGreenString(returnedChange.get("Dime").toString())  + " dime(s), " +
-                        formatter.getGreenString(returnedChange.get("Nickel").toString()) + " nickel(s)\n");
+                        formatter.getGreenString(returnedChange.get("Nickel").toString()) + " nickel(s)");
     }
 
     public void raiseBalance(BigDecimal money) {
@@ -142,7 +145,7 @@ public class Balance {
     //just added in to have some fun and interactivity, would not place in a large asynchronous function.
     public void bufferingTransaction() {
         int count = 0;
-        while (count < 2) {
+        while (count < 1) {
             try {
                 Thread.sleep(500);
                 System.out.print(".");

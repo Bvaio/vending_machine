@@ -50,7 +50,7 @@ public class PurchaseMenu extends Menu {
                 break;
             case "F":
                 getLogger().moneyDispensed();
-                System.out.println( "Current Balance: " + getFormatter().getGreenString("$" + readBalance().getBalance().toString()) + "\n");
+                System.out.println( "Current Balance: " + getFormatter().getGreenString("$" + readBalance().getBalance().toString()));
                 System.out.println( getFormatter().getBlueString("Returning to Main Menu\n "));
                 super.showMenu();
                 break;

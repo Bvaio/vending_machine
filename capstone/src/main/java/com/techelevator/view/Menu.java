@@ -45,7 +45,7 @@ public class Menu {
                 purchaseMenu.purchaseMenu();
                 break;
             case "S" :
-                //secret sales log
+                //sales log generates in /receipts directory
                 sales.generateSalesLog();
                 System.out.println("Sales report generated at " + formatter.getBlueString(getLogger().convertDateTime()));
                 showMenu();
