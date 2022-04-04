@@ -41,7 +41,11 @@ public class Balance {
         while (!(money.compareTo(TWENTY) == 0) && !(money.compareTo(TEN) == 0) && !(money.compareTo(FIVE) == 0) && !(money.compareTo(ONE) == 0) && !(money.compareTo(ZERO) == 0)){
             System.out.println(formatter.getRedString("Invalid denomination selected. Please try again."));
             System.out.println(formatter.getGreenString( "$0\n$1\n$5\n$10\n$20"));
-            money = BigDecimal.valueOf(Integer.parseInt(scan.nextLine()));
+            try {
+                money = BigDecimal.valueOf(Integer.parseInt(scan.nextLine()));
+            } catch (NumberFormatException cannotParseIntoBigDecimal) {
+                money = ZERO;
+            }
         }
         if (money.compareTo(ZERO) == 0) {
             System.out.println("No money added");
