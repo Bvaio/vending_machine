@@ -45,6 +45,7 @@ public class Menu {
                 purchaseMenu.purchaseMenu();
                 break;
             case "S" :
+                //secret sales log
                 sales.generateSalesLog();
                 System.out.println("Sales report generated at " + formatter.getBlueString(getLogger().convertDateTime()));
                 showMenu();
@@ -53,7 +54,8 @@ public class Menu {
                 exit();
                 break;
             default:
-                System.out.println( "None selected try again" );
+                System.out.println(formatter.getRedString( "None selected try again" ));
+                showMenu();
                 break;
         }
     }
@@ -63,7 +65,7 @@ public class Menu {
         Collections.sort( keys ); // sorts keys
 
         for ( String key : keys  ) {
-            System.out.println( key + " | " + pulledInventory.get( key ).displayItem() );
+            System.out.println( getFormatter().getBlueString(key) + " | " + pulledInventory.get( key ).displayItem() );
         }
     }
 

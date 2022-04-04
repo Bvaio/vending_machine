@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class Sales extends Logger{
-    private PrintWriter salesWriter;
     private File salesFile;
 
     public void generateSalesLog() {
@@ -42,9 +41,5 @@ public class Sales extends Logger{
         String date = dateAndTime.toString().replaceAll(":","-");
         date = date.replaceAll("T","_");
         return pathToReport + date + "_sales-report.txt";
-    }
-
-    public void closeSalesWriter(){
-        this.salesWriter.close();
     }
 }

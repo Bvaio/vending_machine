@@ -3,6 +3,7 @@ package com.techelevator.transactions;
 
 import com.techelevator.TextFormatter;
 import com.techelevator.inventory.Item;
+import com.techelevator.view.PurchaseMenu;
 
 import java.awt.*;
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Balance {
+    private static PurchaseMenu purchaseMenu = new PurchaseMenu();
     private static BigDecimal balance = BigDecimal.valueOf(0);
     private final BigDecimal ZERO = BigDecimal.valueOf(0);
     private final BigDecimal ONE = BigDecimal.valueOf(1);
@@ -23,7 +25,7 @@ public class Balance {
 
     public void feedMoney(Scanner scan) {
         System.out.println("Please enter one of the denominations below: ");
-        System.out.println(formatter.getTEXT_GREEN()+ "$0\n$1\n$5\n$10\n$20" + formatter.getTEXT_RESET_COLOR());
+        System.out.println(formatter.getGreenString( "$0\n$1\n$5\n$10\n$20"));
 
         System.out.println("Current balance: " + formatter.getGreenString("$" + balance));
         System.out.print("- - >  ");
@@ -43,24 +45,24 @@ public class Balance {
         } else if ((money.compareTo(TWENTY) == 0) || (money.compareTo(TEN) == 0) || (money.compareTo(FIVE) == 0) || (money.compareTo(ONE) == 0)) {
             raiseBalance(money);
         } else {
-            System.out.println("Invalid denomination selected. Please try again.");
+            System.out.println(formatter.getRedString("Invalid denomination selected. Please try again."));
             feedMoney(scan);
         }
 
         System.out.println("\nNew Balance: " + formatter.getGreenString("$"+ balance));
-        System.out.println("Continue adding funds?\nYes ( " + formatter.getBlueString("Y") + " )\nNo ( " + formatter.getBlueString("Y") + " )");
+        System.out.println("Continue adding funds?\nYes ( " + formatter.getBlueString("Y") + " )\nNo ( " + formatter.getBlueString("N") + " )");
         System.out.print("- - >  ");
         String choice = scan.nextLine().toUpperCase();
-
         while (!choice.equals("Y") && !choice.equals("N")) {
-            System.out.println("Invalid selection, please try again.");
+            System.out.println(formatter.getRedString("Invalid selection, please try again."));
             choice = scan.nextLine().toUpperCase();
         }
 
         if (choice.equalsIgnoreCase("Y")) {
             feedMoney(scan);
         } else if (choice.equalsIgnoreCase("N")) {
-            System.out.println("Returning to Purchase Menu");
+            System.out.println("\n"+formatter.getBlueString("Returning to Purchase Menu"));
+            purchaseMenu.purchaseMenu();
         }
     }
 
@@ -69,7 +71,7 @@ public class Balance {
             if (balance.compareTo(item.getItemPrice()) >= 0) {
                 balance = balance.subtract(item.getItemPrice());
                 item.removeOneFromInventory();
-                System.out.print(formatter.getTEXT_GREEN() + "Dispensing item");
+                System.out.print(formatter.getTEXT_BLUE_AND_BOLD() + "Dispensing item");
                 bufferingTransaction();
             } else {
                 System.out.println("Insufficient funds");
@@ -114,11 +116,11 @@ public class Balance {
         System.out.print(formatter.getTEXT_GREEN() + "Dispensing");
         bufferingTransaction();
         System.out.println(
-                        formatter.getTEXT_GREEN_AND_BOLD() +"Change given: "  + formatter.getRESET_FORMATTING() + formatter.getTEXT_GREEN() +
-                        returnedChange.get("Dollar") +  " dollar(s), " +
-                        returnedChange.get("Quarter") + " quarter(s), " +
-                        returnedChange.get("Dime")  + " dime(s), " +
-                        returnedChange.get("Nickel") + " nickel(s)" + formatter.getTEXT_RESET_COLOR());
+                        formatter.getGreenString("Change given: ") +
+                        formatter.getGreenString(returnedChange.get("Dollar").toString()) +  " dollar(s), " +
+                        formatter.getGreenString(returnedChange.get("Quarter").toString()) + " quarter(s), " +
+                        formatter.getGreenString(returnedChange.get("Dime").toString())  + " dime(s), " +
+                        formatter.getGreenString(returnedChange.get("Nickel").toString()) + " nickel(s)\n");
     }
 
     public void raiseBalance(BigDecimal money) {
@@ -137,6 +139,7 @@ public class Balance {
         return returnedChange;
     }
 
+    //just added in to have some fun and interactivity, would not place in a large asynchronous function.
     public void bufferingTransaction() {
         int count = 0;
         while (count < 2) {

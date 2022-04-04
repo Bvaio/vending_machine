@@ -22,7 +22,7 @@ public class Item {
     }
 
     public String displayItem() {
-        return itemName + " | " + itemPrice + " | Current Stock: " + getInventoryCount();
+        return itemName + " | " + "$" + itemPrice + " | Current Stock: " + getInventoryCount();
     }
 
     public String getSlotIdentifier() {

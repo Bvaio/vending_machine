@@ -21,13 +21,13 @@ public class Logger {
             try {
                 this.writer = new PrintWriter(this.logFile);
             } catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
+                System.out.println(getMenu().getFormatter().getRedString("File not found, please enter valid path name and try again"));
             }
         } else {
             try {
                 this.writer = new PrintWriter(new FileWriter(this.logFile, true));
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                System.out.println(getMenu().getFormatter().getRedString(e.getMessage()));
             }
         }
     }

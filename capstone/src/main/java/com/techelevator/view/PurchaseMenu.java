@@ -38,7 +38,7 @@ public class PurchaseMenu extends Menu {
                     getLogger().itemPurchase(scan, getPulledInventory().get(scan));
                 }
                 catch ( NullPointerException notInListItem ) {
-                    System.out.println( "Item not in list");
+                    System.out.println(getFormatter().getRedString("Item not in list") );
                     purchaseMenu();
                 }
 
@@ -50,12 +50,12 @@ public class PurchaseMenu extends Menu {
                 break;
             case "F":
                 getLogger().moneyDispensed();
-                System.out.println( "Current Balance: " + readBalance().getBalance() );
-                System.out.println( "Returning to Main Menu\n ");
+                System.out.println( "Current Balance: " + getFormatter().getGreenString("$" + readBalance().getBalance().toString()) + "\n");
+                System.out.println( getFormatter().getBlueString("Returning to Main Menu\n "));
                 super.showMenu();
                 break;
             default:
-                System.out.println("Invalid selection, please try again.");
+                System.out.println(getFormatter().getRedString("Invalid selection, please try again."));
                 purchaseMenu();
         }
     }
@@ -67,19 +67,19 @@ public class PurchaseMenu extends Menu {
         final String DESSERT = "dessert";
 
         if ( item.getItemType().equalsIgnoreCase( MUNCHY ) ) {
-            return "Munchy, Munchy, so Good";
+            return getFormatter().getBlueString("Munchy, Munchy, so Good");
         }
         else if ( item.getItemType().equalsIgnoreCase( SANDWICH ) ) {
-            return "Sandwich So Delicious, Yum!";
+            return getFormatter().getBlueString("Sandwich So Delicious, Yum!");
         }
         else if ( item.getItemType().equalsIgnoreCase( DRINK ) ) {
-            return "Drinky, Drinky, Slurp Slurp!";
+            return getFormatter().getBlueString("Drinky, Drinky, Slurp Slurp!");
         }
         else if ( item.getItemType().equalsIgnoreCase( DESSERT ) ) {
-            return "Sugar, Sugar, so Sweet!";
+            return getFormatter().getBlueString("Sugar, Sugar, so Sweet!");
         }
         else {
-            return "That was a good " + item.getItemType();
+            return getFormatter().getBlueString("That was a good ") + item.getItemType();
         }
     }
 }
